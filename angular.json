@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "flip-and-whiz-flashcard:build:production"
+              "buildTarget": "flip-and-whiz-flashcard:build:production"
             },
             "development": {
-              "browserTarget": "flip-and-whiz-flashcard:build:development"
+              "buildTarget": "flip-and-whiz-flashcard:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "flip-and-whiz-flashcard:build"
+            "buildTarget": "flip-and-whiz-flashcard:build"
           }
         },
         "test": {
