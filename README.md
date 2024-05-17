@@ -1,27 +1,61 @@
-# FlipAndWhizFlashcard
+# Flip and Whiz Flashcard
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
+## 🔍 Overview 
 
-## Development server
+The "Flip and Whiz Flashcard" project is an interactive digital flashcard application designed to enhance learning and retention through engaging study sessions. Whether you're a student preparing for exams, a language learner mastering vocabulary, or simply someone looking to expand their knowledge, this application provides an intuitive platform for efficient and enjoyable learning.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🚀 Key Features
 
-## Code scaffolding
+- **Intuitive User Interface:** A sleek and user-friendly interface for easy navigation.
+  
+- **Randomized Study Sessions:** Shuffle flashcard decks for varied and challenging study sessions.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Progress Tracking:** Monitor your learning progress and identify areas for improvement.
 
-## Build
+- **Cross-Platform Compatibility:** Accessible on web browsers, desktops, and mobile devices.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🔧 Installation
 
-## Running unit tests
+Clone the repository to your local machine:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+git clone https://github.com/georgianastasov/flip-and-whiz-flashcard.git
+```
 
-## Running end-to-end tests
+Install dependencies using npm or yarn:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+npm install
+```
 
-## Further help
+or
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
+yarn install
+```
+
+## ▶️ Start the application:
+
+```
+npm start
+```
+
+or
+
+```
+yarn start
+```
+
+Access the application in your web browser at http://localhost:3000.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request with your changes. For major updates, please open an issue first to discuss the proposed changes.
+
+## ⚖️ License
+
+This project is licensed under the MIT License.
+
+## 📧 Contact
+
+For questions or feedback, feel free to reach out to us at ggeorgianastasov@gmail.com.
