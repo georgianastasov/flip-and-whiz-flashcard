@@ -2,15 +2,26 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { FlashcardComponent } from './flashcard/flashcard.component';
+import { FlashcardDeckComponent } from './flashcard-deck/flashcard-deck.component';
+import { FormsModule } from '@angular/forms';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faBookOpen, faLightbulb } from '@fortawesome/free-solid-svg-icons';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FlashcardComponent,
+    FlashcardDeckComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    FontAwesomeModule
   ],
-  providers: [],
+  providers: [{ provide: FaIconLibrary, useValue: { iconDefinitions: { faBookOpen, faLightbulb } } }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
