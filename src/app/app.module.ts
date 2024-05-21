@@ -7,12 +7,14 @@ import { FlashcardDeckComponent } from './flashcard-deck/flashcard-deck.componen
 import { FormsModule } from '@angular/forms';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faBookOpen, faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import { LoginRegisterComponent } from './login-register/login-register.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginRegisterComponent,
     FlashcardComponent,
     FlashcardDeckComponent,
   ],
