@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'flip-and-whiz-flashcard';
+  public title = 'flip-and-whiz-flashcard';
+  public username: any;
+
+  onUsernameSubmitted(username: string) {
+    this.username = username;
+  }
 }
