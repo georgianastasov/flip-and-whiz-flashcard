@@ -24,4 +24,22 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain('flip-and-whiz-flashcard app is running!');
   });
+
+  it('should update the username when onUsernameSubmitted is called', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    const newUsername = 'JohnDoe';
+    
+    app.onUsernameSubmitted(newUsername);
+    
+    expect(app.username).toEqual(newUsername);
+  });
+
+  it('should render the username', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.componentInstance.username = 'JohnDoe';
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.username')?.textContent).toContain('JohnDoe');
+  });
 });
