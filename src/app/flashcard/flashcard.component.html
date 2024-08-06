@@ -1,0 +1,17 @@
+<div class="flashcard">
+    <h2>{{ question }}</h2>
+    <ul>
+        <li *ngFor="let option of options; let i = index">
+            <button (click)="selectOption(i)" [class.selected]="selectedAnswerIndex === i"
+                [class.correct]="selectedAnswerIndex === i && i === correctAnswerIndex"
+                [class.wrong]="(selectedAnswerIndex === i && i !== correctAnswerIndex)"
+                [disabled]="!isAnswerHidden || optionSelected">
+                {{ option }}
+            </button>
+        </li>
+    </ul>
+    <div class="point-value"> {{ points }} <fa-icon class="icon" [icon]="faTrophy"></fa-icon>
+    </div>
+    <button (click)="toggleAnswer()" [disabled]="!isAnswerHidden">{{ isAnswerHidden ? 'Show Answer' : 'Hide Answer'
+        }} <fa-icon class="icon" [icon]="faLightbulb"></fa-icon></button>
+</div>
