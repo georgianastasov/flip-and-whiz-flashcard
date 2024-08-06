@@ -1,0 +1,99 @@
+.flashcard {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px auto;
+    width: 500px;
+    height: 430px;
+    font-family: sans-serif;
+    position: relative;
+}
+
+.flashcard h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.flashcard ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.flashcard li {
+    margin-bottom: 10px;
+}
+
+.flashcard input[type="radio"] {
+    display: none;
+}
+
+.flashcard label {
+    display: none;
+}
+
+.flashcard ul li button {
+    padding: 15px 15px;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    width: 100%;
+    cursor: pointer;
+    background-color: #96abff;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.flashcard ul li button.selected {
+    background-color: #465386;
+    color: white;
+}
+
+.flashcard ul li button:hover {
+    background-color: #465386;
+    color: white;
+}
+
+.flashcard ul li button.correct {
+    background-color: #90EE90;
+    color: #fff;
+}
+
+.flashcard ul li button.wrong {
+    background-color: #ff6347;
+    color: white;
+}
+
+.point-value {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #96abff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    color: white;
+}
+
+.flashcard .point-value .icon {
+    color: white;
+}
+
+.flashcard button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin-top: 15px;
+}
+
+.flashcard button .icon {
+    padding-left: 0.3rem;
+}
+
+.flashcard button:hover {
+    background-color: #3e8e41;
+}
