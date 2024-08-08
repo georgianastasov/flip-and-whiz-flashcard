@@ -1,0 +1,21 @@
+<div *ngIf="flashcards.length > 0">
+    <div class="user-info">
+        <span>Username: <span class="username">{{ username }}</span> <fa-icon class="icon"
+                [icon]="faUser"></fa-icon></span>
+        <span>Points: <span class="points">{{ this.answeredCorrectCount }}</span> <fa-icon class="icon"
+                [icon]="faTrophy"></fa-icon></span>
+    </div>
+    <div *ngIf="!isGameOver">
+        <app-flashcard [question]="flashcards[currentCardIndex].question"
+            [options]="flashcards[currentCardIndex].options"
+            [correctAnswerIndex]="flashcards[currentCardIndex].correctAnswerIndex"
+            [points]="flashcards[currentCardIndex].points" 
+            [newGame]="newGame"
+            (answeredCorrect)="takeAnsweredCorrectCount($event)" (gameOver)="gameOver($event)">
+        </app-flashcard>
+        <button (click)="nextCard()">Next Card <fa-icon class="icon" [icon]="faArrowRight"></fa-icon></button>
+    </div>
+    <div *ngIf="isGameOver">
+        <app-final-score [score]="answeredCorrectCount" (playAgain)="handlePlayAgain()"></app-final-score>
+    </div>
+</div>
