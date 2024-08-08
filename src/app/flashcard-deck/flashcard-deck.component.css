@@ -1,0 +1,63 @@
+h2 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.flashcard-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px auto;
+    max-width: 800px;
+}
+
+.no-flashcards {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #3f51b5;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin: 10px auto;
+    display: block;
+}
+
+button .icon {
+    padding-left: 0.3rem;
+}
+
+button:hover {
+    background-color: #283776;
+}
+
+.user-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #96abff;
+}
+
+.user-info span {
+    margin-right: 10px;
+}
+
+.user-info .username,
+.user-info .points,
+.user-info .icon {
+    color: #3f51b5;
+}
+
+.user-info .icon {
+    padding-left: -0.3rem;
+}
