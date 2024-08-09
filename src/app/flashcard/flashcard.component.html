@@ -1,5 +1,6 @@
 <div class="flashcard">
     <h2>{{ question }}</h2>
+    <div class="timer">Time left: {{ timer }} seconds</div>
     <ul>
         <li *ngFor="let option of options; let i = index">
             <button (click)="selectOption(i)" [class.selected]="selectedAnswerIndex === i"

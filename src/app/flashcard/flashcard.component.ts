@@ -18,6 +18,8 @@ export class FlashcardComponent {
   public correctAnswerIndex!: number;
   @Input()
   public points!: number;
+  @Input()
+  public newGame!: boolean;
 
   public isAnswerHidden = true;
   public optionSelected = false;
@@ -26,12 +28,27 @@ export class FlashcardComponent {
   public selectedOptionIndex!: number;
   public clickedOptionIndex!: number;
 
+  public timer: number = 60;
+  
+  @Output() gameOver = new EventEmitter<boolean>();
   @Output() answeredCorrect = new EventEmitter<number>();
+  
+  private interval: any;
 
-  private ngOnChanges() {
+  public ngOnInit() {
+    this.startTimer();
+  }
+
+  public ngOnChanges() {
     this.isAnswerHidden = true;
     this.optionSelected = false;
     this.selectedAnswerIndex = -1;
+
+    if (this.newGame) {
+      clearInterval(this.interval);
+      this.startTimer();
+      this.newGame = false;
+    }
   }
 
   public toggleAnswer() {
@@ -61,5 +78,17 @@ export class FlashcardComponent {
       this.selectedAnswerIndex = index;
       this.optionSelected = true;
     }
+  }
+
+  private startTimer() {
+    clearInterval(this.interval);
+    this.timer = 10;
+    this.interval = setInterval(() => {
+      this.timer--;
+      if (this.timer === 0) {
+        clearInterval(this.interval);
+        this.gameOver.emit(true);
+      }
+    }, 1000);
   }
 }
