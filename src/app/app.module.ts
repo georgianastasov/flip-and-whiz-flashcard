@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faBookOpen, faLightbulb } from '@fortawesome/free-solid-svg-icons';
 import { LoginRegisterComponent } from './login-register/login-register.component';
+import { FinalScoreComponent } from './final-score/final-score.component';
 
 
 
@@ -17,6 +18,7 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
     LoginRegisterComponent,
     FlashcardComponent,
     FlashcardDeckComponent,
+    FinalScoreComponent
   ],
   imports: [
     BrowserModule,
