@@ -2,7 +2,7 @@
 
 ## 🔍 Overview 
 
-The "Flip and Whiz Flashcard" project is an interactive digital flashcard application designed to enhance learning and retention through engaging study sessions. Whether you're a student preparing for exams, a language learner mastering vocabulary, or simply someone looking to expand their knowledge, this application provides an intuitive platform for efficient and enjoyable learning.
+The "Flip and Whiz Flashcard" project is an interactive digital flashcard application designed to enhance learning and retention through engaging study sessions. Whether you're a student preparing for exams, a language learner mastering vocabulary, or simply someone looking to expand their knowledge, this application provides an intuitive platform for efficient and enjoyable learning. 
 
 ## 🚀 Key Features
 
