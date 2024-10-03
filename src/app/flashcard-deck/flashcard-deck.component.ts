@@ -20,6 +20,9 @@ export class FlashcardDeckComponent {
   public isGameOver = false;
   public newGame = false;
 
+  public skippedQuestions: Flashcard[] = [];
+  public skippedCount = 0;
+
   @Input()
   public username!: string;
 
@@ -34,7 +37,14 @@ export class FlashcardDeckComponent {
   public nextCard() {
     this.currentCardIndex++;
     if (this.currentCardIndex >= this.flashcards.length) {
-      this.currentCardIndex = 0;
+      if (this.skippedQuestions.length > 0) {
+        this.flashcards = this.skippedQuestions;
+        this.skippedQuestions = []; 
+        this.currentCardIndex = 0;
+      } else {
+        this.currentCardIndex = 0;
+        this.isGameOver = true;  
+      }
     }
   }
 
@@ -47,6 +57,13 @@ export class FlashcardDeckComponent {
     this.answeredCorrectCount = 0;
     this.newGame = true;
     this.isGameOver = false;
+  }
+
+  public skipCard() {
+    this.skippedQuestions.push(this.flashcards[this.currentCardIndex]);
+    this.skippedCount++;
+    this.answeredCorrectCount -= 5; 
+    this.nextCard();
   }
 
   private shuffleArray(array: any[]) {
