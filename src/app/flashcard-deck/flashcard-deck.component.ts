@@ -23,6 +23,8 @@ export class FlashcardDeckComponent {
   public skippedQuestions: Flashcard[] = [];
   public skippedCount = 0;
 
+  public hintPenalty = 0;
+
   @Input()
   public username!: string;
 
@@ -66,6 +68,14 @@ export class FlashcardDeckComponent {
     this.nextCard();
   }
 
+  public applyHintPenalty(points: number) {
+    this.hintPenalty += points;  // Deduct points when a hint is used
+  }
+
+  public totalScore(): number {
+    return this.answeredCorrectCount + this.hintPenalty;  // Calculate total score including hint penalties
+  }
+  
   private shuffleArray(array: any[]) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));

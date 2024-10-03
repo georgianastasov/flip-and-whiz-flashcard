@@ -20,6 +20,7 @@ export class FlashcardComponent {
   public points!: number;
   @Input()
   public newGame!: boolean;
+  @Input() hint!: string;
 
   public isAnswerHidden = true;
   public optionSelected = false;
@@ -28,10 +29,14 @@ export class FlashcardComponent {
   public selectedOptionIndex!: number;
   public clickedOptionIndex!: number;
 
+  public hintUsed: boolean = false; 
+  public hintMessage: string = '';
+
   public timer: number = 60;
   
   @Output() gameOver = new EventEmitter<boolean>();
   @Output() answeredCorrect = new EventEmitter<number>();
+  @Output() hintUsedCost = new EventEmitter<number>();
   
   private interval: any;
 
@@ -77,6 +82,14 @@ export class FlashcardComponent {
       this.clickedOptionIndex = index;
       this.selectedAnswerIndex = index;
       this.optionSelected = true;
+    }
+  }
+
+  public showHint() {
+    if (!this.hintUsed) {
+      this.hintMessage = this.hint;
+      this.hintUsedCost.emit(-2);
+      this.hintUsed = true;
     }
   }
 
