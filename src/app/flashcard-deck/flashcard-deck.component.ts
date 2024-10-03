@@ -69,11 +69,11 @@ export class FlashcardDeckComponent {
   }
 
   public applyHintPenalty(points: number) {
-    this.hintPenalty += points;  // Deduct points when a hint is used
+    this.hintPenalty += points;
   }
 
   public totalScore(): number {
-    return this.answeredCorrectCount + this.hintPenalty;  // Calculate total score including hint penalties
+    return this.answeredCorrectCount + this.hintPenalty;
   }
   
   private shuffleArray(array: any[]) {
