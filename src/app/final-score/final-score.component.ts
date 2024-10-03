@@ -10,6 +10,7 @@ export  
  {
   @Input() score: number = 0;
   @Input() skippedCount: number = 0;
+  @Input() hintPenalty: number = 0;
 
   @Output() playAgain = new EventEmitter<void>();
 

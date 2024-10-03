@@ -1,7 +1,10 @@
-<div class="final-score"> 
+<div class="final-score">
     <h2>Game Over</h2>
-    <p>Your final score is: {{ score }}</p>
-    <p>Skipped Questions: {{ skippedCount }}</p>
-    <p>Points deducted for skipped questions: {{ skippedCount * 5 }}</p>
+    <p>Points from answared questions: {{ score }}</p>
+    <p>Skipped questions: {{ skippedCount }}</p>
+    <p>Points deducted for skipped questions: -{{ skippedCount * 5 }}</p>
+    <p>Hints used: {{ hintPenalty / 2 }}</p>
+    <p>Points deducted for using hints: {{ hintPenalty }}</p>
+    <p>Total score (with penalties): {{ score + hintPenalty - (skippedCount * 5) }}</p>
     <button (click)="handlePlayAgain()">Play Again</button>
 </div>
