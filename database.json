@@ -1,0 +1,214 @@
+{
+  "scores": [
+    {
+      "id": "geo01",
+      "name": "Max7",
+      "score": 50,
+      "category": "Geography",
+      "duration": 1
+    },
+    {
+      "id": "geo02",
+      "name": "Luna3",
+      "score": 40,
+      "category": "Geography",
+      "duration": 1
+    },
+    {
+      "id": "geo03",
+      "name": "Orion9",
+      "score": 30,
+      "category": "Geography",
+      "duration": 1
+    },
+    {
+      "id": "geo04",
+      "name": "Atlas5",
+      "score": 20,
+      "category": "Geography",
+      "duration": 1
+    },
+    {
+      "id": "geo05",
+      "name": "NovaX",
+      "score": 10,
+      "category": "Geography",
+      "duration": 1
+    },
+    {
+      "id": "sci01",
+      "name": "Zeta8",
+      "score": 50,
+      "category": "Science",
+      "duration": 1
+    },
+    {
+      "id": "sci02",
+      "name": "Ionix",
+      "score": 40,
+      "category": "Science",
+      "duration": 1
+    },
+    {
+      "id": "sci03",
+      "name": "Quark7",
+      "score": 30,
+      "category": "Science",
+      "duration": 1
+    },
+    {
+      "id": "sci04",
+      "name": "NeoLab",
+      "score": 20,
+      "category": "Science",
+      "duration": 1
+    },
+    {
+      "id": "sci05",
+      "name": "Volt3",
+      "score": 10,
+      "category": "Science",
+      "duration": 1
+    },
+    {
+      "id": "his01",
+      "name": "Cesar9",
+      "score": 50,
+      "category": "History",
+      "duration": 1
+    },
+    {
+      "id": "his02",
+      "name": "Sparta7",
+      "score": 40,
+      "category": "History",
+      "duration": 1
+    },
+    {
+      "id": "his03",
+      "name": "Viking5",
+      "score": 30,
+      "category": "History",
+      "duration": 1
+    },
+    {
+      "id": "his04",
+      "name": "RomeX",
+      "score": 20,
+      "category": "History",
+      "duration": 1
+    },
+    {
+      "id": "his05",
+      "name": "Titan3",
+      "score": 10,
+      "category": "History",
+      "duration": 1
+    },
+    {
+      "id": "mat01",
+      "name": "Sigma8",
+      "score": 50,
+      "category": "Math",
+      "duration": 1
+    },
+    {
+      "id": "mat02",
+      "name": "Delta4",
+      "score": 40,
+      "category": "Math",
+      "duration": 1
+    },
+    {
+      "id": "mat03",
+      "name": "PiXel9",
+      "score": 30,
+      "category": "Math",
+      "duration": 1
+    },
+    {
+      "id": "mat04",
+      "name": "Algeb2",
+      "score": 20,
+      "category": "Math",
+      "duration": 1
+    },
+    {
+      "id": "mat05",
+      "name": "Vector1",
+      "score": 10,
+      "category": "Math",
+      "duration": 1
+    },
+    {
+      "id": "lit01",
+      "name": "Poet7",
+      "score": 50,
+      "category": "Literature",
+      "duration": 1
+    },
+    {
+      "id": "lit02",
+      "name": "Lyric5",
+      "score": 40,
+      "category": "Literature",
+      "duration": 1
+    },
+    {
+      "id": "lit03",
+      "name": "Epic9",
+      "score": 30,
+      "category": "Literature",
+      "duration": 1
+    },
+    {
+      "id": "lit04",
+      "name": "Novel3",
+      "score": 20,
+      "category": "Literature",
+      "duration": 1
+    },
+    {
+      "id": "lit05",
+      "name": "SagaX",
+      "score": 10,
+      "category": "Literature",
+      "duration": 1
+    },
+    {
+      "id": "tec01",
+      "name": "Byte7",
+      "score": 50,
+      "category": "Technology",
+      "duration": 1
+    },
+    {
+      "id": "tec02",
+      "name": "Cyber9",
+      "score": 40,
+      "category": "Technology",
+      "duration": 1
+    },
+    {
+      "id": "tec03",
+      "name": "Nexon5",
+      "score": 30,
+      "category": "Technology",
+      "duration": 1
+    },
+    {
+      "id": "tec04",
+      "name": "Logic3",
+      "score": 20,
+      "category": "Technology",
+      "duration": 1
+    },
+    {
+      "id": "tec05",
+      "name": "RoboX",
+      "score": 10,
+      "category": "Technology",
+      "duration": 1
+    }
+  ]
+}
