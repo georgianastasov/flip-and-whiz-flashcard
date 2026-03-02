@@ -1,101 +1,161 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick,
+} from '@angular/core/testing';
 import { FlashcardComponent } from './flashcard.component';
+import { AudioService } from '../services/audio.service';
 import { By } from '@angular/platform-browser';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('FlashcardComponent', () => {
-  let component: FlashcardComponent;
   let fixture: ComponentFixture<FlashcardComponent>;
+  let component: FlashcardComponent;
+  let audioSpy: jasmine.SpyObj<AudioService>;
 
   beforeEach(async () => {
+    audioSpy = jasmine.createSpyObj('AudioService', [
+      'playSound',
+      'triggerVibration',
+    ]);
+
     await TestBed.configureTestingModule({
       declarations: [FlashcardComponent],
+      providers: [{ provide: AudioService, useValue: audioSpy }],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FlashcardComponent);
     component = fixture.componentInstance;
+
     component.category = 'Science';
-    component.question = 'What is the boiling point of water?';
-    component.options = ['90°C', '100°C', '110°C', '120°C'];
+    component.question = 'What is H2O?';
+    component.options = ['Oxygen', 'Water', 'Hydrogen', 'Helium'];
     component.correctAnswerIndex = 1;
-    component.points = 5;
-    component.hint = 'It is a round number.';
+    component.points = 10;
+    component.hint = 'Two parts hydrogen, one oxygen';
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('creates', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render question and options', () => {
-    const question = fixture.debugElement.query(
-      By.css('.question'),
-    ).nativeElement;
-    expect(question.textContent).toContain(
-      'What is the boiling point of water?',
-    );
-    const optionButtons = fixture.debugElement.queryAll(By.css('.option-btn'));
-    expect(optionButtons.length).toBe(4);
-    expect(optionButtons[1].nativeElement.textContent).toContain('100°C');
+  it('renders question and options', () => {
+    const q = fixture.debugElement.query(By.css('.question')).nativeElement;
+    expect(q.textContent).toContain('What is H2O?');
+    const opts = fixture.debugElement.queryAll(By.css('.option-btn'));
+    expect(opts.length).toBe(4);
+    expect(opts[1].nativeElement.textContent).toContain('Water');
   });
 
-  it('should emit answeredCorrect when correct option is selected', () => {
+  it('selecting correct option plays success, vibrates, emits answeredCorrect and sets aura/hype', fakeAsync(() => {
     spyOn(component.answeredCorrect, 'emit');
     spyOn(component.answered, 'emit');
     component.selectOption(1);
-    expect(component.optionSelected).toBeTrue();
-    expect(component.answeredCorrect.emit).toHaveBeenCalledWith(5);
-  });
+    fixture.detectChanges();
 
-  it('should emit answered when any option is selected', (done) => {
+    expect(component.optionSelected).toBeTrue();
+    expect(component.clickedOptionIndex).toBe(1);
+    expect(audioSpy.playSound).toHaveBeenCalledWith(
+      'assets/sounds/success.mp3',
+    );
+    expect(audioSpy.triggerVibration).toHaveBeenCalledWith(50);
+    expect(component.hypeClass).toBe('blue');
+    expect(component.auraClass).toBe('blue');
+    expect(component.hypeText).toBeTruthy();
+    expect(component.answeredCorrect.emit).toHaveBeenCalledWith(10);
+
+    tick(900);
+    expect(component.hypeText).toBe('');
+
+    tick(700);
+    expect(component.answered.emit).toHaveBeenCalled();
+  }));
+
+  it('selecting wrong option plays wrong sound, vibrates pattern, emits answeredWrong and marks classes', fakeAsync(() => {
+    spyOn(component.answeredWrong, 'emit');
     spyOn(component.answered, 'emit');
     component.selectOption(0);
-    setTimeout(() => {
-      expect(component.answered.emit).toHaveBeenCalled();
-      done();
-    }, 1600);
-  });
-
-  it('should mark correct and wrong options visually', () => {
-    component.selectOption(0);
     fixture.detectChanges();
-    const optionButtons = fixture.debugElement.queryAll(By.css('.option-btn'));
-    expect(optionButtons[1].nativeElement.classList).toContain('correct');
-    expect(optionButtons[0].nativeElement.classList).toContain('wrong');
-  });
 
-  it('should show hint and emit hintUsedCost', () => {
+    expect(audioSpy.playSound).toHaveBeenCalledWith('assets/sounds/wrong.mp3');
+    expect(audioSpy.triggerVibration).toHaveBeenCalledWith([100, 50, 100]);
+    expect(component.hypeClass).toBe('red');
+    expect(component.auraClass).toBe('red');
+    expect(component.answeredWrong.emit).toHaveBeenCalled();
+
+    const optionBtns = fixture.debugElement.queryAll(By.css('.option-btn'));
+    expect(optionBtns[1].nativeElement.classList).toContain('correct');
+    expect(optionBtns[0].nativeElement.classList).toContain('wrong');
+
+    tick(900);
+    expect(component.hypeText).toBe('');
+    tick(1500);
+    expect(component.answered.emit).toHaveBeenCalled();
+  }));
+
+  it('hype element appears only above chosen option', fakeAsync(() => {
+    component.selectOption(2);
+    fixture.detectChanges();
+    const lis = fixture.debugElement.queryAll(By.css('.option-item'));
+    const hypeCounts = lis.map(
+      (li, i) =>
+        !!li.query(By.css('.hype')) && component.clickedOptionIndex === i,
+    );
+    expect(hypeCounts.filter(Boolean).length).toBe(1);
+    expect(component.clickedOptionIndex).toBe(2);
+  }));
+
+  it('showHint emits cost and plays hint sound when allowed', () => {
     spyOn(component.hintUsedCost, 'emit');
     component.showHint();
-    fixture.detectChanges();
-    expect(component.hintMessage).toBe('It is a round number.');
+    expect(component.hintMessage).toBe('Two parts hydrogen, one oxygen');
     expect(component.hintUsedCost.emit).toHaveBeenCalledWith(-2);
-    const hintBox = fixture.debugElement.query(
-      By.css('.hint-box'),
-    ).nativeElement;
-    expect(hintBox.textContent).toContain('It is a round number.');
+    expect(audioSpy.playSound).toHaveBeenCalledWith('assets/sounds/hint.mp3');
   });
 
-  it('should not show hint if already used or option selected', () => {
+  it('showHint does nothing when hint already used or option selected', () => {
     component.hintUsed = true;
+    component.hintMessage = '';
     component.showHint();
     expect(component.hintMessage).toBe('');
+
     component.hintUsed = false;
     component.optionSelected = true;
     component.showHint();
     expect(component.hintMessage).toBe('');
   });
 
-  it('should reset state on ngOnChanges', () => {
+  it('keyboard shortcuts select options, show hint and emit skipRequested', () => {
+    spyOn(component.skipRequested, 'emit');
+    spyOn(component.answeredCorrect, 'emit');
+    component.handleKeyboardEvent(new KeyboardEvent('keydown', { key: 'a' }));
+    expect(component.optionSelected).toBeTrue();
+    component.ngOnChanges();
+    component.handleKeyboardEvent(new KeyboardEvent('keydown', { key: 'h' }));
+    expect(component.hintMessage).toBe('Two parts hydrogen, one oxygen');
+    const spaceEvent = new KeyboardEvent('keydown', { code: 'Space' });
+    component.handleKeyboardEvent(spaceEvent);
+    expect(component.skipRequested.emit).toHaveBeenCalled();
+  });
+
+  it('ngOnChanges resets state', () => {
     component.optionSelected = true;
     component.selectedAnswerIndex = 2;
-    component.hintMessage = 'hint';
+    component.hintMessage = 'x';
     component.hintUsed = true;
+    component.hypeText = 'y';
+    component.hypeClass = 'red';
+    component.auraClass = 'blue';
     component.ngOnChanges();
     expect(component.optionSelected).toBeFalse();
     expect(component.selectedAnswerIndex).toBe(-1);
     expect(component.hintMessage).toBe('');
     expect(component.hintUsed).toBeFalse();
+    expect(component.hypeText).toBe('');
+    expect(component.hypeClass).toBe('');
+    expect(component.auraClass).toBe('idle');
   });
 });

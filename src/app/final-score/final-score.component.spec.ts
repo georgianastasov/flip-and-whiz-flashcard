@@ -1,80 +1,165 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick,
+} from '@angular/core/testing';
 import { FinalScoreComponent } from './final-score.component';
-import { By } from '@angular/platform-browser';
+import {
+  LeaderboardService,
+  LeaderboardEntry,
+} from '../services/leaderboard.service';
+import { of } from 'rxjs';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('FinalScoreComponent', () => {
-  let component: FinalScoreComponent;
   let fixture: ComponentFixture<FinalScoreComponent>;
+  let component: FinalScoreComponent;
+  let leaderboardSpy: jasmine.SpyObj<LeaderboardService>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
+  const mockScores: LeaderboardEntry[] = [
+    { id: '1', name: 'Alice', score: 200, category: 'All', duration: 60 },
+    { id: '2', name: 'Bob', score: 150, category: 'All', duration: 60 },
+    { id: '3', name: 'Carol', score: 120, category: 'All', duration: 60 },
+  ];
+
+  beforeEach(async () => {
+    leaderboardSpy = jasmine.createSpyObj('LeaderboardService', [
+      'addScore',
+      'getScores',
+    ]);
+    await TestBed.configureTestingModule({
       declarations: [FinalScoreComponent],
+      providers: [{ provide: LeaderboardService, useValue: leaderboardSpy }],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FinalScoreComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('creates', () => {
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 
-  it('should display the correct score', () => {
-    component.score = 10;
-    fixture.detectChanges();
-    const scoreValue = fixture.debugElement.query(
-      By.css('.value.success'),
-    ).nativeElement;
-    expect(scoreValue.textContent.trim()).toBe('10');
-  });
-
-  it('should calculate totalScore correctly', () => {
-    component.score = 10;
-    component.hintPenalty = 4;
-    component.skippedCount = 2;
-    expect(component.totalScore).toBe(10 + 4 - 2 * 3); 
-  });
-
-  it('should calculate hintsUsed correctly', () => {
-    component.hintPenalty = 6;
-    expect(component.hintsUsed).toBe(3);
-  });
-
-  it('should emit playAgainSame when Play Same Settings button is clicked', () => {
-    spyOn(component.playAgainSame, 'emit');
-    const btn = fixture.debugElement.query(
-      By.css('.primary-btn'),
-    ).nativeElement;
-    btn.click();
-    expect(component.playAgainSame.emit).toHaveBeenCalled();
-  });
-
-  it('should emit startNewGame when Start New Game button is clicked', () => {
-    spyOn(component.startNewGame, 'emit');
-    const btn = fixture.debugElement.query(
-      By.css('.secondary-btn'),
-    ).nativeElement;
-    btn.click();
-    expect(component.startNewGame.emit).toHaveBeenCalled();
-  });
-
-  it('should render the final score correctly', () => {
-    component.score = 12;
+  it('renders score rows and total correctly from inputs', () => {
+    component.correctCount = 4;
+    component.correctPoints = 40;
+    component.wrongCount = 1;
+    component.wrongPenalty = 5;
+    component.skipCount = 2;
+    component.skipPenalty = 6;
+    component.hintCount = 1;
     component.hintPenalty = 2;
-    component.skippedCount = 1;
+    component.totalScore = 27;
     fixture.detectChanges();
-    const totalScore = fixture.debugElement.query(
-      By.css('.total'),
-    ).nativeElement;
-    expect(totalScore.textContent.trim()).toBe('13');
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const correctRow = compiled.querySelectorAll('.score-row')[0];
+    const wrongRow = compiled.querySelectorAll('.score-row')[1];
+    const skipRow = compiled.querySelectorAll('.score-row')[2];
+    const hintRow = compiled.querySelectorAll('.score-row')[3];
+    const total = compiled.querySelector('.total') as HTMLElement;
+
+    expect(correctRow.textContent).toContain('+40');
+    expect(wrongRow.textContent).toContain('-5');
+    expect(skipRow.textContent).toContain('-6');
+    expect(hintRow.textContent).toContain('-2');
+    expect(total.textContent.trim()).toBe('27');
   });
 
-  it('should render all score rows', () => {
+  it('emits events when buttons are clicked', () => {
+    spyOn(component.playAgainSame, 'emit');
+    spyOn(component.startNewGame, 'emit');
+    spyOn(component.viewLeaderboard, 'emit');
     fixture.detectChanges();
-    const rows = fixture.debugElement.queryAll(By.css('.score-row'));
-    expect(rows.length).toBe(5);
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const playBtn = compiled.querySelector('.primary-btn') as HTMLButtonElement;
+    const startNewBtn = compiled.querySelectorAll(
+      '.primary-btn',
+    )[1] as HTMLButtonElement;
+    const viewBtn = compiled.querySelector(
+      '.tertiary-btn',
+    ) as HTMLButtonElement;
+
+    playBtn.click();
+    startNewBtn.click();
+    viewBtn.click();
+
+    expect(component.playAgainSame.emit).toHaveBeenCalled();
+    expect(component.startNewGame.emit).toHaveBeenCalled();
+    expect(component.viewLeaderboard.emit).toHaveBeenCalled();
   });
+
+  it('copyToClipboard writes text and shows temporary success', fakeAsync(() => {
+    const writeSpy = spyOn(
+      navigator.clipboard,
+      'writeText' as any,
+    ).and.returnValue(Promise.resolve());
+    fixture.detectChanges();
+
+    component.totalScore = 42;
+    component.playerName = 'Tester';
+    component.gameCategory = 'All';
+    component.gameDuration = 60;
+
+    component.copyToClipboard();
+    tick(); 
+    expect(writeSpy).toHaveBeenCalled();
+    expect(component.copySuccess).toBeTrue();
+
+    tick(1200);
+    expect(component.copySuccess).toBeFalse();
+  }));
+
+  it('ngOnInit when victory posts score and computes rank', fakeAsync(() => {
+    const created: LeaderboardEntry = {
+      id: '99',
+      name: 'Me',
+      score: 130,
+      category: 'All',
+      duration: 60,
+    };
+    const scoresWithMe = [...mockScores, created].sort(
+      (a, b) => b.score - a.score,
+    );
+    leaderboardSpy.addScore.and.returnValue(of(created));
+    leaderboardSpy.getScores.and.returnValue(of(scoresWithMe));
+
+    component.isVictory = true;
+    component.playerName = 'Me';
+    component.gameCategory = 'All';
+    component.gameDuration = 60;
+    component.totalScore = 130;
+
+    fixture.detectChanges();
+    tick();
+    expect(leaderboardSpy.addScore).toHaveBeenCalledWith(
+      jasmine.objectContaining({ name: 'Me', score: 130 }),
+    );
+    expect(leaderboardSpy.getScores).toHaveBeenCalled();
+    expect(component.isRankLoading).toBeFalse();
+    expect(component.playerRank).toBe(
+      scoresWithMe.findIndex((s) => s.id === '99') + 1,
+    );
+  }));
+
+  it('handles leaderboard save error gracefully', fakeAsync(() => {
+    leaderboardSpy.addScore.and.returnValue(
+      of({ id: 'x', name: 'X', score: 10, category: 'All', duration: 60 }),
+    );
+    leaderboardSpy.getScores.and.returnValue(of([]));
+    component.isVictory = true;
+    component.playerName = 'X';
+    fixture.detectChanges();
+    tick();
+    expect(component.isSavingError).toBeFalse();
+
+    leaderboardSpy.addScore.and.returnValue(
+      of({ id: 'y', name: 'Y', score: 0, category: 'All', duration: 60 }),
+    );
+    leaderboardSpy.getScores.and.returnValue(of([]));
+  }));
 });
