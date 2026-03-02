@@ -1,0 +1,118 @@
+{
+  "COMMON": {
+    "MIN": "分",
+    "ALL": "すべて",
+    "ALL_TOPICS": "すべてのトピック",
+    "ALL_TIMES": "全期間",
+    "SUDDEN_DEATH": "サドンデス",
+    "PTS": "ポイント",
+    "BACK": "戻る"
+  },
+  "CATEGORIES": {
+    "HISTORY": "歴史",
+    "GEOGRAPHY": "地理",
+    "SCIENCE": "科学",
+    "LITERATURE": "文学",
+    "MATHEMATICS": "数学",
+    "TECHNOLOGY": "テクノロジー",
+    "ALL": "ミックス（すべて）"
+  },
+  "LANGUAGES": {
+    "ENGLISH": "英語",
+    "CHINESE": "中国語",
+    "SPANISH": "スペイン語",
+    "GERMAN": "ドイツ語",
+    "FRENCH": "フランス語",
+    "BULGARIAN": "ブルガリア語"
+  },
+  "ERRORS": {
+    "NAME_TOO_SHORT": "名前は3文字以上で入力してください。",
+    "NAME_TOO_LONG": "名前は10文字以内で入力してください。",
+    "NAME_INVALID_CHARS": "使用できるのはラテン文字と数字のみです（スペースや記号は不可）。",
+    "NAME_INAPPROPRIATE": "不適切な単語が含まれています。別の名前を選んでください。",
+    "LEADERBOARD_CONNECT": "リーダーボードに接続できませんでした。"
+  },
+  "APP": {
+    "SWITCH_LIGHT": "ライトモードに切り替え",
+    "SWITCH_DARK": "ダークモードに切り替え",
+    "CHANGE_LANG": "言語を変更",
+    "START_NEW_GAME": "新しいゲームを開始",
+    "TITLE_1": "Flip & Whiz",
+    "TITLE_2": "フラッシュカード",
+    "SUBTITLE": "知識を試そう。デッキを制覇せよ。",
+    "START_BTN": "ゲーム開始",
+    "VIEW_LEADERBOARD": "リーダーボードを見る",
+    "SELECT_TIME": "プレイ時間を選択",
+    "TIME_SUBTITLE": "どのくらいプレイしますか？",
+    "SELECT_CATEGORY": "カテゴリーを選択",
+    "CATEGORY_SUBTITLE": "どのトピックを攻略しますか？",
+    "ENTER_ALIAS": "ニックネームを入力",
+    "ALIAS_SUBTITLE": "リーダーボードに名を刻もう。",
+    "PLAYER_NAME_PLACEHOLDER": "プレイヤー名",
+    "READY_TO_PLAY": "プレイ準備完了"
+  },
+  "DECK": {
+    "SCORE": "スコア",
+    "TIME": "時間",
+    "MODE": "モード",
+    "DEATH": "デス",
+    "SKIP": "スキップ",
+    "END_GAME": "ゲーム終了",
+    "NO_CARDS": "このカテゴリーにはカードがありません。"
+  },
+  "FLASHCARD": {
+    "GET_HINT": "ヒントを見る",
+    "HYPES": {
+      "WRONG_1": "あっ！",
+      "WRONG_2": "惜しい！",
+      "WRONG_3": "もう一度！",
+      "WRONG_4": "あと少し！",
+      "CORRECT_1": "すごい！",
+      "CORRECT_2": "止まらない！",
+      "CORRECT_3": "完璧！",
+      "CORRECT_4": "パーフェクト！"
+    }
+  },
+  "FINAL_SCORE": {
+    "TITLE": "ミッション達成",
+    "CORRECT_ANSWERS": "正解数",
+    "WRONG_ANSWERS": "不正解数",
+    "SKIPPED_CARDS": "スキップしたカード",
+    "HINTS_USED": "使用したヒント",
+    "FINAL_SCORE_LABEL": "最終スコア",
+    "COPY_TITLE": "スコアカードをコピー",
+    "COPIED": "コピーしました！",
+    "RANKED": "順位",
+    "OF": "/",
+    "IN": "（",
+    "PLAY_SAME": "同じ設定でプレイ",
+    "START_NEW": "新しいゲームを開始",
+    "VIEW_LEADERBOARD": "フルリーダーボードを見る",
+    "CLIPBOARD_TEXT": "🃏 *Flip & Whiz*\n\n🏆 スコア: {{score}} ポイント\n🌍 {{duration}} {{category}}\n👑 世界ランキング: #{{rank}}！\n\n挑戦してみる？こちらからプレイ: https://github.com/georgianastasov/flip-and-whiz-flashcard"
+  },
+  "LEADERBOARD": {
+    "TITLE": "殿堂",
+    "SUBTITLE": "Flip & Whiz の最強プレイヤーたち",
+    "GLOBAL_ALL_TIME": "グローバル",
+    "TOP": "トップ",
+    "LOADING": "リーダーボードを読み込み中...",
+    "NO_SCORES": "この設定ではまだスコアがありません。最初の挑戦者になろう！"
+  },
+  "HOW_TO_PLAY": {
+    "BUTTON": "遊び方",
+    "TITLE": "📖 Flip & Whiz の遊び方",
+    "STEP_1_TITLE": "🎮 1. 旅を始めよう",
+    "STEP_1_DESC": "「ゲーム開始」ボタンをクリックして始めましょう。",
+    "STEP_2_TITLE": "⏱️ 2. プレイ時間を選ぶ",
+    "STEP_2_DESC": "1分、3分、または5分を選択。勇気がある？1回でも間違えると即終了のサドンデスに挑戦！",
+    "STEP_3_TITLE": "🧠 3. カテゴリーを選ぶ",
+    "STEP_3_DESC": "歴史や科学など特定のテーマを極めるか、ミックス（すべて）を選んで全カテゴリーの問題に挑戦しよう。",
+    "STEP_4_TITLE": "✍️ 4. ニックネームを登録",
+    "STEP_4_DESC": "プレイヤー名を入力（3～10文字、ラテン文字と数字のみ）して記録を残そう。",
+    "STEP_5_TITLE": "⚡ 5. ゲームプレイと得点",
+    "STEP_5_DESC": "正解するとポイント獲得！ただし注意：不正解は5ポイント減点。ヒント使用（-2ポイント）やカードをスキップ（-3ポイント）も可能。",
+    "STEP_6_TITLE": "🏆 6. 殿堂入り",
+    "STEP_6_DESC": "ゲーム終了後、合計ポイントと選択したモード・カテゴリーでの世界順位を確認しよう！",
+    "CLOSE": "了解！プレイする"
+  }
+}

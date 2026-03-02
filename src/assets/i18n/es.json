@@ -1,0 +1,118 @@
+{
+  "COMMON": {
+    "MIN": "Min",
+    "ALL": "Todos",
+    "ALL_TOPICS": "Todos los temas",
+    "ALL_TIMES": "Todos los tiempos",
+    "SUDDEN_DEATH": "Muerte súbita",
+    "PTS": "PTS",
+    "BACK": "Atrás"
+  },
+  "CATEGORIES": {
+    "HISTORY": "Historia",
+    "GEOGRAPHY": "Geografía",
+    "SCIENCE": "Ciencia",
+    "LITERATURE": "Literatura",
+    "MATHEMATICS": "Matemáticas",
+    "TECHNOLOGY": "Tecnología",
+    "ALL": "Mixto (Todos)"
+  },
+  "LANGUAGES": {
+    "ENGLISH": "Inglés",
+    "CHINESE": "Chino",
+    "SPANISH": "Español",
+    "GERMAN": "Alemán",
+    "FRENCH": "Francés",
+    "BULGARIAN": "Búlgaro"
+  },
+  "ERRORS": {
+    "NAME_TOO_SHORT": "El nombre debe tener al menos 3 caracteres.",
+    "NAME_TOO_LONG": "El nombre no puede superar los 10 caracteres.",
+    "NAME_INVALID_CHARS": "Solo se permiten letras latinas y números (sin espacios ni símbolos).",
+    "NAME_INAPPROPRIATE": "Palabra inapropiada detectada. Por favor, elige otro nombre.",
+    "LEADERBOARD_CONNECT": "No se pudo conectar con la clasificación."
+  },
+  "APP": {
+    "SWITCH_LIGHT": "Cambiar a modo claro",
+    "SWITCH_DARK": "Cambiar a modo oscuro",
+    "CHANGE_LANG": "Cambiar idioma",
+    "START_NEW_GAME": "Iniciar nueva partida",
+    "TITLE_1": "Flip & Whiz",
+    "TITLE_2": "Flashcards",
+    "SUBTITLE": "Pon a prueba tu conocimiento. Domina la baraja.",
+    "START_BTN": "Comenzar juego",
+    "VIEW_LEADERBOARD": "Ver clasificación",
+    "SELECT_TIME": "Seleccionar duración",
+    "TIME_SUBTITLE": "¿Cuánto tiempo quieres jugar?",
+    "SELECT_CATEGORY": "Seleccionar categoría",
+    "CATEGORY_SUBTITLE": "¿Qué tema quieres conquistar?",
+    "ENTER_ALIAS": "Introduce tu alias",
+    "ALIAS_SUBTITLE": "Reclama tu puesto en la clasificación.",
+    "PLAYER_NAME_PLACEHOLDER": "Nombre del jugador",
+    "READY_TO_PLAY": "Listo para jugar"
+  },
+  "DECK": {
+    "SCORE": "Puntuación",
+    "TIME": "Tiempo",
+    "MODE": "Modo",
+    "DEATH": "MUERTE",
+    "SKIP": "Saltar",
+    "END_GAME": "Finalizar partida",
+    "NO_CARDS": "¡No se encontraron cartas para esta categoría!"
+  },
+  "FLASHCARD": {
+    "GET_HINT": "Obtener pista",
+    "HYPES": {
+      "WRONG_1": "¡Ay!",
+      "WRONG_2": "¡Casi!",
+      "WRONG_3": "¡Inténtalo de nuevo!",
+      "WRONG_4": "¡No del todo!",
+      "CORRECT_1": "¡Relámpago!",
+      "CORRECT_2": "¡Imparable!",
+      "CORRECT_3": "¡Perfectamente!",
+      "CORRECT_4": "¡Perfecto!"
+    }
+  },
+  "FINAL_SCORE": {
+    "TITLE": "Misión cumplida",
+    "CORRECT_ANSWERS": "Respuestas correctas",
+    "WRONG_ANSWERS": "Respuestas incorrectas",
+    "SKIPPED_CARDS": "Cartas omitidas",
+    "HINTS_USED": "Pistas usadas",
+    "FINAL_SCORE_LABEL": "Puntuación final",
+    "COPY_TITLE": "Copiar tarjeta de puntuación",
+    "COPIED": "¡Copiado!",
+    "RANKED": "Clasificado",
+    "OF": "de",
+    "IN": "en",
+    "PLAY_SAME": "Jugar con la misma configuración",
+    "START_NEW": "Iniciar nuevo juego",
+    "VIEW_LEADERBOARD": "Ver clasificación completa",
+    "CLIPBOARD_TEXT": "🃏 *Flip & Whiz*\n\n🏆 Puntuación: {{score}} pts\n🌍 {{duration}} {{category}}\n👑 Posición: #{{rank}} en la clasificación global!\n\n¿Puedes superarme? Juega aquí: https://github.com/georgianastasov/flip-and-whiz-flashcard"
+  },
+  "LEADERBOARD": {
+    "TITLE": "Salón de la fama",
+    "SUBTITLE": "Las mentes más brillantes en Flip & Whiz",
+    "GLOBAL_ALL_TIME": "Global",
+    "TOP": "Top",
+    "LOADING": "Cargando clasificación...",
+    "NO_SCORES": "No se encontraron puntuaciones con esta configuración. ¡Sé el primero!"
+  },
+  "HOW_TO_PLAY": {
+    "BUTTON": "Cómo jugar",
+    "TITLE": "📖 Cómo jugar Flip & Whiz",
+    "STEP_1_TITLE": "🎮 1. Comienza tu aventura",
+    "STEP_1_DESC": "Haz clic en el botón Iniciar juego para comenzar.",
+    "STEP_2_TITLE": "⏱️ 2. Elige tu tiempo",
+    "STEP_2_DESC": "Selecciona 1, 3 o 5 minutos. ¿Te sientes valiente? Prueba Muerte Súbita, donde una sola respuesta incorrecta termina la partida al instante.",
+    "STEP_3_TITLE": "🧠 3. Elige una categoría",
+    "STEP_3_DESC": "Domina un tema específico como Historia o Ciencia, o elige Mixto (Todas) para enfrentar preguntas de todas las categorías.",
+    "STEP_4_TITLE": "✍️ 4. Elige tu alias",
+    "STEP_4_DESC": "Introduce un nombre de jugador (3 a 10 caracteres, solo letras/números latinos) para guardar tu logro.",
+    "STEP_5_TITLE": "⚡ 5. Juego y puntuación",
+    "STEP_5_DESC": "¡Responde correctamente para ganar puntos! Cuidado: una respuesta incorrecta resta 5 puntos. ¿Necesitas ayuda? Usa una Pista (-2 pts) o salta la carta (-3 pts).",
+    "STEP_6_TITLE": "🏆 6. Salón de la Fama",
+    "STEP_6_DESC": "Al finalizar la partida, mira tu puntuación total y descubre tu clasificación global en el modo y categoría elegidos.",
+    "CLOSE": "¡Entendido! Vamos a jugar"
+  }
+}

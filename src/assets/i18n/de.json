@@ -1,0 +1,118 @@
+{
+  "COMMON": {
+    "MIN": "Min",
+    "ALL": "Alle",
+    "ALL_TOPICS": "Alle Themen",
+    "ALL_TIMES": "Alle Zeiten",
+    "SUDDEN_DEATH": "Sudden Death",
+    "PTS": "Pkt",
+    "BACK": "Zurück"
+  },
+  "CATEGORIES": {
+    "HISTORY": "Geschichte",
+    "GEOGRAPHY": "Geografie",
+    "SCIENCE": "Wissenschaft",
+    "LITERATURE": "Literatur",
+    "MATHEMATICS": "Mathematik",
+    "TECHNOLOGY": "Technologie",
+    "ALL": "Gemischt (Alle)"
+  },
+  "LANGUAGES": {
+    "ENGLISH": "Englisch",
+    "CHINESE": "Chinesisch",
+    "SPANISH": "Spanisch",
+    "GERMAN": "Deutsch",
+    "FRENCH": "Französisch",
+    "BULGARIAN": "Bulgarisch"
+  },
+  "ERRORS": {
+    "NAME_TOO_SHORT": "Der Name muss mindestens 3 Zeichen lang sein.",
+    "NAME_TOO_LONG": "Der Name darf maximal 10 Zeichen lang sein.",
+    "NAME_INVALID_CHARS": "Nur lateinische Buchstaben und Zahlen erlaubt (keine Leerzeichen oder Symbole).",
+    "NAME_INAPPROPRIATE": "Unangemessenes Wort erkannt. Bitte wähle einen anderen Namen.",
+    "LEADERBOARD_CONNECT": "Verbindung zur Bestenliste konnte nicht hergestellt werden."
+  },
+  "APP": {
+    "SWITCH_LIGHT": "Zum Hellmodus wechseln",
+    "SWITCH_DARK": "Zum Dunkelmodus wechseln",
+    "CHANGE_LANG": "Sprache ändern",
+    "START_NEW_GAME": "Neues Spiel starten",
+    "TITLE_1": "Flip & Whiz",
+    "TITLE_2": "Flashcards",
+    "SUBTITLE": "Teste dein Wissen. Meistere das Deck.",
+    "START_BTN": "Spiel starten",
+    "VIEW_LEADERBOARD": "Bestenliste anzeigen",
+    "SELECT_TIME": "Spielzeit auswählen",
+    "TIME_SUBTITLE": "Wie lange möchtest du spielen?",
+    "SELECT_CATEGORY": "Kategorie auswählen",
+    "CATEGORY_SUBTITLE": "Welches Thema möchtest du meistern?",
+    "ENTER_ALIAS": "Alias eingeben",
+    "ALIAS_SUBTITLE": "Sichere dir deinen Platz in der Bestenliste.",
+    "PLAYER_NAME_PLACEHOLDER": "Spielername",
+    "READY_TO_PLAY": "Bereit zu spielen"
+  },
+  "DECK": {
+    "SCORE": "Punktzahl",
+    "TIME": "Zeit",
+    "MODE": "Modus",
+    "DEATH": "DEATH",
+    "SKIP": "Überspringen",
+    "END_GAME": "Spiel beenden",
+    "NO_CARDS": "Keine Karten für diese Kategorie gefunden!"
+  },
+  "FLASHCARD": {
+    "GET_HINT": "Hinweis erhalten",
+    "HYPES": {
+      "WRONG_1": "Autsch!",
+      "WRONG_2": "Knapp!",
+      "WRONG_3": "Versuch es nochmal!",
+      "WRONG_4": "Nicht ganz!",
+      "CORRECT_1": "Blitzschnell!",
+      "CORRECT_2": "Unaufhaltsam!",
+      "CORRECT_3": "Volltreffer!",
+      "CORRECT_4": "Perfekt!"
+    }
+  },
+  "FINAL_SCORE": {
+    "TITLE": "Mission erfüllt",
+    "CORRECT_ANSWERS": "Richtige Antworten",
+    "WRONG_ANSWERS": "Falsche Antworten",
+    "SKIPPED_CARDS": "Übersprungene Karten",
+    "HINTS_USED": "Verwendete Hinweise",
+    "FINAL_SCORE_LABEL": "Endpunktzahl",
+    "COPY_TITLE": "Scorekarte in die Zwischenablage kopieren",
+    "COPIED": "Kopiert!",
+    "RANKED": "Platziert",
+    "OF": "von",
+    "IN": "in",
+    "PLAY_SAME": "Mit gleichen Einstellungen spielen",
+    "START_NEW": "Neues Spiel starten",
+    "VIEW_LEADERBOARD": "Vollständige Rangliste anzeigen",
+    "CLIPBOARD_TEXT": "🃏 *Flip & Whiz*\n\n🏆 Punktzahl: {{score}} Pkt.\n🌍 {{duration}} {{category}}\n👑 Rang: #{{rank}} in der globalen Rangliste!\n\nKannst du mich schlagen? Spiele hier: https://github.com/georgianastasov/flip-and-whiz-flashcard"
+  },
+  "LEADERBOARD": {
+    "TITLE": "Ruhmeshalle",
+    "SUBTITLE": "Die größten Köpfe in Flip & Whiz",
+    "GLOBAL_ALL_TIME": "Global",
+    "TOP": "Top",
+    "LOADING": "Bestenliste wird geladen...",
+    "NO_SCORES": "Keine Punktzahlen für diese Einstellungen gefunden. Sei der Erste!"
+  },
+  "HOW_TO_PLAY": {
+    "BUTTON": "Spielanleitung",
+    "TITLE": "📖 So spielt man Flip & Whiz",
+    "STEP_1_TITLE": "🎮 1. Starte deine Reise",
+    "STEP_1_DESC": "Klicke auf „Spiel starten“, um zu beginnen.",
+    "STEP_2_TITLE": "⏱️ 2. Wähle deine Zeit",
+    "STEP_2_DESC": "Wähle 1, 3 oder 5 Minuten. Mutig? Probiere „Sudden Death“, bei dem eine falsche Antwort das Spiel sofort beendet!",
+    "STEP_3_TITLE": "🧠 3. Kategorie wählen",
+    "STEP_3_DESC": "Meistere ein bestimmtes Thema wie Geschichte oder Wissenschaft oder wähle Gemischt (Alle) für Fragen aus allen Kategorien.",
+    "STEP_4_TITLE": "✍️ 4. Wähle deinen Alias",
+    "STEP_4_DESC": "Gib einen Spielernamen ein (3 bis 10 Zeichen, nur lateinische Buchstaben/Zahlen), damit wir dein Ergebnis speichern können.",
+    "STEP_5_TITLE": "⚡ 5. Spiel & Punkte",
+    "STEP_5_DESC": "Beantworte Fragen richtig, um Punkte zu sammeln! Achtung: Eine falsche Antwort kostet 5 Punkte. Hilfe nötig? Nutze einen Hinweis (-2 Pkt.) oder überspringe die Karte (-3 Pkt.).",
+    "STEP_6_TITLE": "🏆 6. Ruhmeshalle",
+    "STEP_6_DESC": "Nach Spielende siehst du deine Gesamtpunkte und deine weltweite Platzierung für deinen gewählten Modus und deine Kategorie!",
+    "CLOSE": "Verstanden! Los geht’s"
+  }
+}

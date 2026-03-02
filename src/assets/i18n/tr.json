@@ -1,0 +1,118 @@
+{
+  "COMMON": {
+    "MIN": "Dak",
+    "ALL": "Tümü",
+    "ALL_TOPICS": "Tüm Konular",
+    "ALL_TIMES": "Tüm Zamanlar",
+    "SUDDEN_DEATH": "Ani Ölüm",
+    "PTS": "Puan",
+    "BACK": "Geri"
+  },
+  "CATEGORIES": {
+    "HISTORY": "Tarih",
+    "GEOGRAPHY": "Coğrafya",
+    "SCIENCE": "Bilim",
+    "LITERATURE": "Edebiyat",
+    "MATHEMATICS": "Matematik",
+    "TECHNOLOGY": "Teknoloji",
+    "ALL": "Karışık (Tümü)"
+  },
+  "LANGUAGES": {
+    "ENGLISH": "İngilizce",
+    "CHINESE": "Çince",
+    "SPANISH": "İspanyolca",
+    "GERMAN": "Almanca",
+    "FRENCH": "Fransızca",
+    "BULGARIAN": "Bulgarca"
+  },
+  "ERRORS": {
+    "NAME_TOO_SHORT": "İsim en az 3 karakter olmalıdır.",
+    "NAME_TOO_LONG": "İsim 10 karakterden fazla olamaz.",
+    "NAME_INVALID_CHARS": "Sadece Latin harfleri ve rakamlar kullanılabilir (boşluk veya sembol yok).",
+    "NAME_INAPPROPRIATE": "Uygunsuz kelime tespit edildi. Lütfen başka bir isim seçin.",
+    "LEADERBOARD_CONNECT": "Liderlik tablosuna bağlanılamadı."
+  },
+  "APP": {
+    "SWITCH_LIGHT": "Açık moda geç",
+    "SWITCH_DARK": "Koyu moda geç",
+    "CHANGE_LANG": "Dili değiştir",
+    "START_NEW_GAME": "Yeni oyun başlat",
+    "TITLE_1": "Flip & Whiz",
+    "TITLE_2": "Flashcards",
+    "SUBTITLE": "Bilgini test et. Desteyi ustalaştır.",
+    "START_BTN": "Oyunu başlat",
+    "VIEW_LEADERBOARD": "Liderlik tablosunu görüntüle",
+    "SELECT_TIME": "Oyun süresini seç",
+    "TIME_SUBTITLE": "Ne kadar süre oynamak istiyorsun?",
+    "SELECT_CATEGORY": "Kategori seç",
+    "CATEGORY_SUBTITLE": "Hangi konuyu fethetmek istiyorsun?",
+    "ENTER_ALIAS": "Takma adını gir",
+    "ALIAS_SUBTITLE": "Liderlik tablosunda yerini al.",
+    "PLAYER_NAME_PLACEHOLDER": "Oyuncu adı",
+    "READY_TO_PLAY": "Oynamaya hazır"
+  },
+  "DECK": {
+    "SCORE": "Skor",
+    "TIME": "Süre",
+    "MODE": "Mod",
+    "DEATH": "ÖLÜM",
+    "SKIP": "Atla",
+    "END_GAME": "Oyunu bitir",
+    "NO_CARDS": "Bu kategori için kart bulunamadı!"
+  },
+  "FLASHCARD": {
+    "GET_HINT": "İpucu al",
+    "HYPES": {
+      "WRONG_1": "Ah!",
+      "WRONG_2": "Yaklaştın!",
+      "WRONG_3": "Tekrar dene!",
+      "WRONG_4": "Tam değil!",
+      "CORRECT_1": "Şimşek gibi!",
+      "CORRECT_2": "Durdurulamaz!",
+      "CORRECT_3": "Tam isabet!",
+      "CORRECT_4": "Mükemmel!"
+    }
+  },
+  "FINAL_SCORE": {
+    "TITLE": "Görev Tamamlandı",
+    "CORRECT_ANSWERS": "Doğru Cevaplar",
+    "WRONG_ANSWERS": "Yanlış Cevaplar",
+    "SKIPPED_CARDS": "Atlanan Kartlar",
+    "HINTS_USED": "Kullanılan İpuçları",
+    "FINAL_SCORE_LABEL": "Final Skoru",
+    "COPY_TITLE": "Skor Kartını Kopyala",
+    "COPIED": "Kopyalandı!",
+    "RANKED": "Sıralama",
+    "OF": "/",
+    "IN": "içinde",
+    "PLAY_SAME": "Aynı Ayarlarla Oyna",
+    "START_NEW": "Yeni Oyun Başlat",
+    "VIEW_LEADERBOARD": "Tam Liderlik Tablosunu Gör",
+    "CLIPBOARD_TEXT": "🃏 *Flip & Whiz*\n\n🏆 Skor: {{score}} puan\n🌍 {{duration}} {{category}}\n👑 Sıra: #{{rank}} Küresel Liderlik Tablosunda!\n\nBeni geçebilir misin? Buradan oyna: https://github.com/georgianastasov/flip-and-whiz-flashcard"
+  },
+  "LEADERBOARD": {
+    "TITLE": "Şampiyonlar Salonu",
+    "SUBTITLE": "Flip & Whiz'in en büyük zihinleri",
+    "GLOBAL_ALL_TIME": "Küresel — Tüm Zamanlar",
+    "TOP": "En İyi",
+    "LOADING": "Liderlik tablosu yükleniyor...",
+    "NO_SCORES": "Bu ayarlar için skor bulunamadı. İlk sen ol!"
+  },
+  "HOW_TO_PLAY": {
+    "BUTTON": "Nasıl Oynanır",
+    "TITLE": "📖 Flip & Whiz Nasıl Oynanır",
+    "STEP_1_TITLE": "🎮 1. Yolculuğunu Başlat",
+    "STEP_1_DESC": "Başlamak için Oyunu Başlat düğmesine tıkla.",
+    "STEP_2_TITLE": "⏱️ 2. Süreni Seç",
+    "STEP_2_DESC": "1, 3 veya 5 dakika seç. Cesur musun? Tek bir yanlış cevabın oyunu anında bitirdiği Ani Ölüm modunu dene!",
+    "STEP_3_TITLE": "🧠 3. Kategori Seç",
+    "STEP_3_DESC": "Tarih veya Bilim gibi belirli bir konuda ustalaş ya da Tümü (Karışık) seçeneğiyle tüm kategorilerden sorularla karşılaş.",
+    "STEP_4_TITLE": "✍️ 4. Takma Adını Seç",
+    "STEP_4_DESC": "Bir oyuncu adı gir (3-10 karakter, yalnızca Latin harfleri/rakamlar), böylece başarını kaydedelim.",
+    "STEP_5_TITLE": "⚡ 5. Oynanış ve Puanlama",
+    "STEP_5_DESC": "Doğru cevap vererek puan kazan! Ancak dikkat: yanlış cevap 5 puan kaybettirir. Yardıma mı ihtiyacın var? İpucu kullan (-2 puan) veya kartı atla (-3 puan).",
+    "STEP_6_TITLE": "🏆 6. Şöhretler Salonu",
+    "STEP_6_DESC": "Oyun bittiğinde toplam puanını gör ve seçtiğin mod ve kategori için küresel sıralamadaki yerini keşfet!",
+    "CLOSE": "Tamam! Hadi oynayalım"
+  }
+}

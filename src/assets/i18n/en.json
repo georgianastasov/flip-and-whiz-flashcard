@@ -1,0 +1,118 @@
+{
+  "COMMON": {
+    "MIN": "Min",
+    "ALL": "All",
+    "ALL_TOPICS": "All Topics",
+    "ALL_TIMES": "All Times",
+    "SUDDEN_DEATH": "Sudden Death",
+    "PTS": "PTS",
+    "BACK": "Back"
+  },
+  "CATEGORIES": {
+    "HISTORY": "History",
+    "GEOGRAPHY": "Geography",
+    "SCIENCE": "Science",
+    "LITERATURE": "Literature",
+    "MATHEMATICS": "Mathematics",
+    "TECHNOLOGY": "Technology",
+    "ALL": "Mixed (All)"
+  },
+  "LANGUAGES": {
+    "ENGLISH": "English",
+    "CHINESE": "Chinese",
+    "SPANISH": "Spanish",
+    "GERMAN": "German",
+    "FRENCH": "French",
+    "BULGARIAN": "Bulgarian"
+  },
+  "ERRORS": {
+    "NAME_TOO_SHORT": "Name must be at least 3 characters.",
+    "NAME_TOO_LONG": "Name cannot exceed 10 characters.",
+    "NAME_INVALID_CHARS": "Only latin letters and numbers allowed (no spaces or symbols).",
+    "NAME_INAPPROPRIATE": "Inappropriate word detected. Please choose another name.",
+    "LEADERBOARD_CONNECT": "Could not connect to Leaderboard."
+  },
+  "APP": {
+    "SWITCH_LIGHT": "Switch to Light Mode",
+    "SWITCH_DARK": "Switch to Dark Mode",
+    "CHANGE_LANG": "Change Language",
+    "START_NEW_GAME": "Start New Game",
+    "TITLE_1": "Flip & Whiz",
+    "TITLE_2": "Flashcards",
+    "SUBTITLE": "Test your knowledge. Master the deck.",
+    "START_BTN": "Start Game",
+    "VIEW_LEADERBOARD": "View Leaderboard",
+    "SELECT_TIME": "Select Game Time",
+    "TIME_SUBTITLE": "How long do you want to play?",
+    "SELECT_CATEGORY": "Select Category",
+    "CATEGORY_SUBTITLE": "What topic do you want to conquer?",
+    "ENTER_ALIAS": "Enter Your Alias",
+    "ALIAS_SUBTITLE": "Claim your spot on the leaderboard.",
+    "PLAYER_NAME_PLACEHOLDER": "Player Name",
+    "READY_TO_PLAY": "Ready to Play"
+  },
+  "DECK": {
+    "SCORE": "Score",
+    "TIME": "Time",
+    "MODE": "Mode",
+    "DEATH": "DEATH",
+    "SKIP": "Skip",
+    "END_GAME": "End Game",
+    "NO_CARDS": "No cards found for this category!"
+  },
+  "FLASHCARD": {
+    "GET_HINT": "Get Hint",
+    "HYPES": {
+      "WRONG_1": "Ouch!",
+      "WRONG_2": "Close!",
+      "WRONG_3": "Try again!",
+      "WRONG_4": "Not quite!",
+      "CORRECT_1": "Lightning!",
+      "CORRECT_2": "Unstoppable!",
+      "CORRECT_3": "Nailed it!",
+      "CORRECT_4": "Perfect!"
+    }
+  },
+  "FINAL_SCORE": {
+    "TITLE": "Mission Accomplished",
+    "CORRECT_ANSWERS": "Correct Answers",
+    "WRONG_ANSWERS": "Wrong Answers",
+    "SKIPPED_CARDS": "Skipped Cards",
+    "HINTS_USED": "Hints Used",
+    "FINAL_SCORE_LABEL": "Final Score",
+    "COPY_TITLE": "Copy Scorecard to Clipboard",
+    "COPIED": "Copied!",
+    "RANKED": "Ranked",
+    "OF": "of",
+    "IN": "in",
+    "PLAY_SAME": "Play Same Settings",
+    "START_NEW": "Start New Game",
+    "VIEW_LEADERBOARD": "View Full Leaderboard",
+    "CLIPBOARD_TEXT": "🃏 *Flip & Whiz*\n\n🏆 Score: {{score}} pts\n🌍 {{duration}} {{category}}\n👑 Rank: #{{rank}} on the Global Leaderboard!\n\nThink you can beat me? Play here: https://github.com/georgianastasov/flip-and-whiz-flashcard"
+  },
+  "LEADERBOARD": {
+    "TITLE": "Hall of Fame",
+    "SUBTITLE": "The greatest minds in Flip & Whiz",
+    "GLOBAL_ALL_TIME": "Global",
+    "TOP": "Top",
+    "LOADING": "Loading Leaderboard...",
+    "NO_SCORES": "No scores found for these settings. Be the first!"
+  },
+  "HOW_TO_PLAY": {
+    "BUTTON": "How to Play",
+    "TITLE": "📖 How to Play Flip & Whiz",
+    "STEP_1_TITLE": "🎮 1. Start Your Journey",
+    "STEP_1_DESC": "Click the Start Game button to begin.",
+    "STEP_2_TITLE": "⏱️ 2. Choose Your Time",
+    "STEP_2_DESC": "Select 1, 3, or 5 minutes. Feeling brave? Try Sudden Death, where a single wrong answer ends the game instantly!",
+    "STEP_3_TITLE": "🧠 3. Pick a Category",
+    "STEP_3_DESC": "Master a specific topic like History or Science, or choose Mixed (All) to face questions from every category.",
+    "STEP_4_TITLE": "✍️ 4. Claim Your Alias",
+    "STEP_4_DESC": "Enter a player name (3 to 10 characters, Latin letters/numbers only) so we can record your legacy.",
+    "STEP_5_TITLE": "⚡ 5. Gameplay & Scoring",
+    "STEP_5_DESC": "Answer correctly to earn points! But be careful: a wrong answer costs 5 points. Need help? Use a Hint (-2 pts) or Skip the card entirely (-3 pts).",
+    "STEP_6_TITLE": "🏆 6. Hall of Fame",
+    "STEP_6_DESC": "When the game ends, see your total points and discover your global rank for your chosen mode and category!",
+    "CLOSE": "Got it! Let's Play"
+  }
+}
