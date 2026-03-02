@@ -4,8 +4,10 @@ import {
   Input,
   Output,
   OnChanges,
+  HostListener,
 } from '@angular/core';
 import { faLightbulb, faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { AudioService } from '../services/audio.service';
 
 @Component({
   selector: 'app-flashcard',
@@ -13,9 +15,6 @@ import { faLightbulb, faTrophy } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./flashcard.component.css'],
 })
 export class FlashcardComponent implements OnChanges {
-  public faLightbulb = faLightbulb;
-  public faTrophy = faTrophy;
-
   @Input() public category!: string;
   @Input() public question!: string;
   @Input() public options!: string[];
@@ -24,6 +23,9 @@ export class FlashcardComponent implements OnChanges {
   @Input() public newGame!: boolean;
   @Input() public hint!: string;
 
+  public faLightbulb = faLightbulb;
+  public faTrophy = faTrophy;
+
   public optionSelected = false;
   public selectedAnswerIndex!: number;
   public clickedOptionIndex!: number;
@@ -31,16 +33,56 @@ export class FlashcardComponent implements OnChanges {
   public hintUsed: boolean = false;
   public hintMessage: string = '';
 
-  private wrongHypes = ['Ouch!', 'Close!', 'Try again!', 'Not quite!'];
+  private wrongHypes = [
+    'FLASHCARD.HYPES.WRONG_1',
+    'FLASHCARD.HYPES.WRONG_2',
+    'FLASHCARD.HYPES.WRONG_3',
+    'FLASHCARD.HYPES.WRONG_4',
+  ];
+  private correctHypes = [
+    'FLASHCARD.HYPES.CORRECT_1',
+    'FLASHCARD.HYPES.CORRECT_2',
+    'FLASHCARD.HYPES.CORRECT_3',
+    'FLASHCARD.HYPES.CORRECT_4',
+  ];
+
   public hypeText: string = '';
   public hypeClass: 'blue' | 'red' | '' = '';
+  public auraClass: 'idle' | 'blue' | 'red' = 'idle';
 
   @Output() answeredCorrect = new EventEmitter<number>();
   @Output() hintUsedCost = new EventEmitter<number>();
   @Output() answered = new EventEmitter<void>();
+  @Output() answeredWrong = new EventEmitter<void>();
+  @Output() skipRequested = new EventEmitter<void>();
 
   private advanceTimeout: any;
-  private correctHypes = ['Lightning!', 'Unstoppable!', 'Nailed it!', 'Perfect!'];
+
+  constructor(private audioService: AudioService) {}
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (this.optionSelected) return;
+
+    const key = event.key.toLowerCase();
+
+    if ((key === 'a' || key === '1') && this.options.length > 0)
+      this.selectOption(0);
+    else if ((key === 'b' || key === '2') && this.options.length > 1)
+      this.selectOption(1);
+    else if ((key === 'c' || key === '3') && this.options.length > 2)
+      this.selectOption(2);
+    else if ((key === 'd' || key === '4') && this.options.length > 3)
+      this.selectOption(3);
+    else if (key === 'h') {
+      this.showHint();
+    }
+
+    else if (event.code === 'Space') {
+      event.preventDefault();
+      this.skipRequested.emit();
+    }
+  }
 
   public ngOnChanges() {
     this.optionSelected = false;
@@ -50,6 +92,7 @@ export class FlashcardComponent implements OnChanges {
     clearTimeout(this.advanceTimeout);
     this.hypeText = '';
     this.hypeClass = '';
+    this.auraClass = 'idle';
   }
 
   public selectOption(index: number) {
@@ -61,25 +104,36 @@ export class FlashcardComponent implements OnChanges {
       let delayBeforeNextCard = 1500;
 
       if (this.selectedAnswerIndex === this.correctAnswerIndex) {
-        const audio = new Audio('assets/sounds/success.mp3');
-        audio.play();
-        this.hypeText = this.correctHypes[Math.floor(Math.random() * this.correctHypes.length)];
+        this.audioService.playSound('assets/sounds/success.mp3');
+        this.audioService.triggerVibration(50);
+        this.hypeText =
+          this.correctHypes[
+            Math.floor(Math.random() * this.correctHypes.length)
+          ];
         this.hypeClass = 'blue';
+        this.auraClass = 'blue';
+
         this.answeredCorrect.emit(this.points);
+
         delayBeforeNextCard = 700;
       } else {
-        const audio = new Audio('assets/sounds/wrong.mp3');
-        audio.play();
-        this.hypeText = this.wrongHypes[Math.floor(Math.random() * this.wrongHypes.length)];
+        this.audioService.playSound('assets/sounds/wrong.mp3');
+        this.audioService.triggerVibration([100, 50, 100]);
+        this.hypeText =
+          this.wrongHypes[Math.floor(Math.random() * this.wrongHypes.length)];
         this.hypeClass = 'red';
+        this.auraClass = 'red';
+
+        this.answeredWrong.emit();
       }
 
       setTimeout(() => {
-          this.hypeText = '';
-          this.hypeClass = '';
+        this.hypeText = '';
+        this.hypeClass = '';
       }, 900);
 
       this.advanceTimeout = setTimeout(() => {
+
         this.answered.emit();
       }, delayBeforeNextCard);
     }
@@ -90,8 +144,7 @@ export class FlashcardComponent implements OnChanges {
       this.hintMessage = this.hint;
       this.hintUsedCost.emit(-2);
       this.hintUsed = true;
-      const audio = new Audio('assets/sounds/hint.mp3');
-      audio.play().catch(() => {});
+      this.audioService.playSound('assets/sounds/hint.mp3');
     }
   }
 }

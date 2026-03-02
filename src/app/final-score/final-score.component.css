@@ -1,8 +1,8 @@
 .final-score {
-    width: 650px;
+    width: 600px;
     max-width: 95vw;
     text-align: center;
-    padding: 24px 32px;
+    padding: 20px 28px;
     border-radius: 24px;
     background: var(--card-bg);
     backdrop-filter: blur(16px);
@@ -23,32 +23,32 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(var(--c-sec-rgb), 0.1) 0%, transparent 60%);
     z-index: -1;
     animation: rotateGlow 10s linear infinite;
 }
 
 .score-header {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .trophy-container {
-    background: linear-gradient(135deg, #0ea5e9, #38bdf8);
-    width: 50px;
-    height: 50px;
+    background: linear-gradient(135deg, var(--c-tert), var(--accent-blue));
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto 10px auto;
-    box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
-    font-size: 1.5rem;
+    margin: 0 auto 8px auto;
+    box-shadow: 0 0 30px var(--text-glow-blue);
+    font-size: 1.3rem;
     color: #fff;
 }
 
 .score-header h2 {
     color: var(--text-title);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 800;
     margin: 0;
 }
@@ -56,17 +56,17 @@
 .score-card {
     background: var(--score-card-bg);
     border-radius: 16px;
-    padding: 12px 20px;
-    margin-bottom: 15px;
+    padding: 10px 18px;
+    margin-bottom: 12px;
 }
 
 .score-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 6px 0;
+    padding: 4px 0;
     border-bottom: 1px solid var(--score-row-border);
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 .score-row:last-child {
@@ -84,52 +84,53 @@
 }
 
 .value.success {
-    color: #10b981;
+    color: var(--c-succ);
 }
 
 .value.danger {
-    color: #f43f5e;
+    color: var(--c-dang);
 }
 
 .total-score-box {
-    margin: 0 0 20px 0;
+    margin: 0 0 15px 0;
     padding: 12px;
-    background: linear-gradient(90deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2));
-    border: 1px solid rgba(6, 182, 212, 0.4);
+    background: linear-gradient(90deg, rgba(var(--c-sec-rgb), 0.2), rgba(var(--c-tert-rgb), 0.2));
+    border: 1px solid rgba(var(--c-tert-rgb), 0.4);
     border-radius: 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .total-score-box .label {
-    color: #06b6d4;
-    font-size: 1rem;
+    color: var(--c-tert);
+    font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .total-score-box .total {
     color: var(--text-title);
-    font-size: 2.8rem;
+    font-size: 3.8rem;
     line-height: 1;
     font-weight: 800;
 }
 
 .btn-group {
     display: flex;
-    gap: 15px;
+    gap: 12px;
     justify-content: center;
 }
 
 .primary-btn, .secondary-btn {
-    padding: 12px 20px;
+    padding: 10px 16px;
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     transition: all 0.3s ease;
     display: inline-flex;
@@ -140,14 +141,14 @@
 }
 
 .primary-btn {
-    background: linear-gradient(90deg, #ec4899 0%, #8b5cf6 100%);
+    background: linear-gradient(90deg, var(--c-prim) 0%, var(--c-sec) 100%);
     color: white;
-    box-shadow: 0 10px 20px rgba(236, 72, 153, 0.3);
+    box-shadow: 0 10px 20px rgba(var(--c-prim-rgb), 0.3);
 }
 
 .primary-btn:hover {
     transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 15px 25px rgba(236, 72, 153, 0.5);
+    box-shadow: 0 15px 25px rgba(var(--c-prim-rgb), 0.5);
 }
 
 .secondary-btn {
@@ -158,8 +159,8 @@
 
 .secondary-btn:hover {
     transform: translateY(-3px) scale(1.03);
-    background: rgba(6, 182, 212, 0.15);
-    border-color: #06b6d4;
+    background: rgba(var(--c-tert-rgb), 0.15);
+    border-color: var(--c-tert);
 }
 
 @keyframes rotateGlow {
@@ -173,19 +174,181 @@
 }
 
 @keyframes glowText {
-    0% {
-        text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(var(--c-tert-rgb), 0.5);
     }
 
     50% {
-        text-shadow: 0 0 40px rgba(6, 182, 212, 0.9), 0 0 10px #fff;
-    }
-
-    100% {
-        text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+        text-shadow: 0 0 40px rgba(var(--c-tert-rgb), 0.9), 0 0 10px #fff;
     }
 }
 
 .animate-glow-text {
     animation: glowText 2s ease-in-out infinite;
+}
+
+.integrated-rank {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--rank-divider);
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.integrated-rank.error {
+    color: var(--c-dang);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.rank-main {
+    color: var(--text-title);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.rank-number {
+    color: var(--btn-text-purple);
+    font-size: 1.25rem;
+    font-weight: 800;
+    text-shadow: 0 0 12px var(--btn-purple-bg);
+}
+
+.rank-sub {
+    color: var(--text-title);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 2px;
+    font-weight: 500;
+}
+
+.tertiary-btn {
+    width: 100%;
+    padding: 12px 20px;
+    margin-top: 12px;
+    background: var(--btn-purple-bg);
+    border: 1px solid var(--btn-purple-border);
+    color: var(--btn-text-purple);
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px var(--btn-purple-bg);
+}
+
+.tertiary-btn:hover {
+    background: linear-gradient(90deg, var(--c-prim) 0%, var(--c-sec) 100%);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 5px 25px rgba(var(--c-prim-rgb), 0.4);
+    transform: translateY(-2px);
+}
+
+.score-share-icon-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--btn-border);
+    background: var(--btn-bg);
+    color: var(--text-muted);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(5px);
+}
+
+.score-share-icon-btn:hover {
+    background: rgba(var(--c-sec-rgb), 0.2);
+    color: var(--c-sec);
+    transform: scale(1.1);
+}
+
+.score-share-icon-btn.success {
+    background: var(--c-succ);
+    border-color: var(--c-succ);
+    color: white;
+    animation: successPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.copied-text {
+    position: absolute;
+    top: 50px;
+    right: 5px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--c-succ);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    pointer-events: none;
+}
+
+@keyframes successPop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.6s ease forwards;
+}
+
+.start-new-btn {
+    background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1;
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.start-new-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 25px rgba(139, 92, 246, 0.6);
+    filter: brightness(1.1);
 }

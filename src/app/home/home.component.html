@@ -1,0 +1,138 @@
+<button class="back-btn animate-fade-in"
+    *ngIf="wizardState === 'duration' || wizardState === 'category' || wizardState === 'name'" (click)="goBack()">
+    <i class="fa-solid fa-arrow-left"></i>
+    {{ 'COMMON.BACK' | translate }}
+</button>
+
+<div class="container">
+    <div *ngIf="wizardState === 'home'" class="start-section animate-fade-in-up">
+        <h1 class="app-title">{{ 'APP.TITLE_1' | translate }}<br><span class="highlight">{{ 'APP.TITLE_2' | translate
+                }}</span></h1>
+        <p class="subtitle">{{ 'APP.SUBTITLE' | translate }}</p>
+
+        <button class="start-btn pulse-glow" (click)="startGame()">{{ 'APP.START_BTN' | translate }}</button>
+
+        <div class="secondary-actions">
+            <button class="home-leaderboard-btn" (click)="openLeaderboard()">
+                <i class="fa-solid fa-list"></i> {{ 'APP.VIEW_LEADERBOARD' | translate }}
+            </button>
+            <button class="how-to-play-btn" (click)="toggleHowToPlay()">
+                <i class="fa-solid fa-circle-question"></i> {{ 'HOW_TO_PLAY.BUTTON' | translate }}
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="wizardState === 'duration'" class="duration-section animate-fade-in-up">
+        <h1 class="app-title-small">{{ 'APP.SELECT_TIME' | translate }}</h1>
+        <p class="subtitle">{{ 'APP.TIME_SUBTITLE' | translate }}</p>
+
+        <div class="duration-options" style="flex-wrap: wrap;">
+            <button class="duration-btn" (click)="setDuration(1)">
+                <span class="time">1</span><span class="unit">{{ 'COMMON.MIN' | translate }}</span>
+            </button>
+            <button class="duration-btn" (click)="setDuration(3)">
+                <span class="time">3</span><span class="unit">{{ 'COMMON.MIN' | translate }}</span>
+            </button>
+            <button class="duration-btn" (click)="setDuration(5)">
+                <span class="time">5</span><span class="unit">{{ 'COMMON.MIN' | translate }}</span>
+            </button>
+            <button class="duration-btn death-btn" (click)="setDuration(0)">
+                <i class="fa-solid fa-skull time-icon"></i>
+                <span class="unit">{{ 'COMMON.SUDDEN_DEATH' | translate }}</span>
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="wizardState === 'category'" class="category-section animate-fade-in-up">
+        <h1 class="app-title-small">{{ 'APP.SELECT_CATEGORY' | translate }}</h1>
+        <p class="subtitle">{{ 'APP.CATEGORY_SUBTITLE' | translate }}</p>
+
+        <div class="category-grid">
+            <button class="category-btn" (click)="setCategory('History')">
+                <i class="fa-solid fa-landmark cat-icon"></i>
+                <span class="cat-name">{{ 'CATEGORIES.HISTORY' | translate }}</span>
+            </button>
+            <button class="category-btn" (click)="setCategory('Geography')">
+                <i class="fa-solid fa-earth-americas cat-icon"></i>
+                <span class="cat-name">{{ 'CATEGORIES.GEOGRAPHY' | translate }}</span>
+            </button>
+            <button class="category-btn" (click)="setCategory('Science')">
+                <i class="fa-solid fa-flask cat-icon"></i>
+                <span class="cat-name">{{ 'CATEGORIES.SCIENCE' | translate }}</span>
+            </button>
+            <button class="category-btn" (click)="setCategory('Literature')">
+                <i class="fa-solid fa-book cat-icon"></i>
+                <span class="cat-name">{{ 'CATEGORIES.LITERATURE' | translate }}</span>
+            </button>
+            <button class="category-btn" (click)="setCategory('Math')">
+                <i class="fa-solid fa-calculator cat-icon"></i>
+                <span class="cat-name">{{ 'CATEGORIES.MATHEMATICS' | translate }}</span>
+            </button>
+            <button class="category-btn" (click)="setCategory('Technology')">
+                <i class="fa-solid fa-microchip cat-icon"></i>
+                <span class="cat-name">{{ 'CATEGORIES.TECHNOLOGY' | translate }}</span>
+            </button>
+            <button class="category-btn highlight-cat" (click)="setCategory('All')">
+                <i class="fa-solid fa-shuffle cat-icon"></i>
+                <span class="cat-name">{{ 'CATEGORIES.ALL' | translate }}</span>
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="wizardState === 'name'" class="name-section animate-fade-in-up">
+        <h1 class="app-title-small">{{ 'APP.ENTER_ALIAS' | translate }}</h1>
+        <p class="subtitle">{{ 'APP.ALIAS_SUBTITLE' | translate }}</p>
+
+        <div class="name-input-container">
+            <input type="text" class="name-input" [class.invalid]="nameError"
+                [placeholder]="'APP.PLAYER_NAME_PLACEHOLDER' | translate" (input)="onNameInput($event)" maxlength="11"
+                autocomplete="off" spellcheck="false" [value]="playerName">
+            <div class="error-text" *ngIf="nameError">{{ nameError | translate }}</div>
+        </div>
+
+        <button class="start-btn pulse-glow mt-20" [disabled]="!isNameValid" (click)="startGamePlay()">{{
+            'APP.READY_TO_PLAY' | translate }}</button>
+    </div>
+</div>
+
+<div class="modal-overlay animate-fade-in" *ngIf="isHowToPlayOpen" (click)="toggleHowToPlay()">
+    <div class="modal-content animate-slide-up" (click)="$event.stopPropagation()">
+
+        <button class="close-modal-icon" (click)="toggleHowToPlay()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <h2 class="modal-title">{{ 'HOW_TO_PLAY.TITLE' | translate }}</h2>
+
+        <div class="rules-list">
+            <div class="rule-item">
+                <span class="rule-title">{{ 'HOW_TO_PLAY.STEP_1_TITLE' | translate }}</span>
+                <span class="rule-desc">{{ 'HOW_TO_PLAY.STEP_1_DESC' | translate }}</span>
+            </div>
+            <div class="rule-item">
+                <span class="rule-title">{{ 'HOW_TO_PLAY.STEP_2_TITLE' | translate }}</span>
+                <span class="rule-desc">{{ 'HOW_TO_PLAY.STEP_2_DESC' | translate }}</span>
+            </div>
+            <div class="rule-item">
+                <span class="rule-title">{{ 'HOW_TO_PLAY.STEP_3_TITLE' | translate }}</span>
+                <span class="rule-desc">{{ 'HOW_TO_PLAY.STEP_3_DESC' | translate }}</span>
+            </div>
+            <div class="rule-item">
+                <span class="rule-title">{{ 'HOW_TO_PLAY.STEP_4_TITLE' | translate }}</span>
+                <span class="rule-desc">{{ 'HOW_TO_PLAY.STEP_4_DESC' | translate }}</span>
+            </div>
+            <div class="rule-item">
+                <span class="rule-title">{{ 'HOW_TO_PLAY.STEP_5_TITLE' | translate }}</span>
+                <span class="rule-desc">{{ 'HOW_TO_PLAY.STEP_5_DESC' | translate }}</span>
+            </div>
+            <div class="rule-item">
+                <span class="rule-title">{{ 'HOW_TO_PLAY.STEP_6_TITLE' | translate }}</span>
+                <span class="rule-desc">{{ 'HOW_TO_PLAY.STEP_6_DESC' | translate }}</span>
+            </div>
+        </div>
+
+        <button class="close-modal-btn" (click)="toggleHowToPlay()">
+            {{ 'HOW_TO_PLAY.CLOSE' | translate }}
+        </button>
+    </div>
+</div>

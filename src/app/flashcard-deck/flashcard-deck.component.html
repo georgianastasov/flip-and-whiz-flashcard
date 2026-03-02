@@ -1,17 +1,32 @@
 <div class="flashcard-deck-container">
-
     <div class="score-info animate-drop-in" *ngIf="!isGameOver">
-        <div class="score-part">
-            <span class="points-label">Score</span>
+        <div class="score-part" style="position: relative;">
+            
+            <div class="score-popup" 
+                 [ngClass]="scorePopupClass" 
+                 [style.animation-duration.ms]="scorePopupDuration"
+                 *ngIf="scorePopupText">
+                {{ scorePopupText }}
+            </div>
+
+            <span class="points-label">{{ 'DECK.SCORE' | translate }}</span>
             <span class="points-value">
-                {{ answeredCorrectCount }} <fa-icon class="icon" [icon]="faTrophy"></fa-icon>
+                {{ totalScore }} <fa-icon class="icon" [icon]="faTrophy"></fa-icon>
             </span>
         </div>
 
-        <div class="timer-part" [class.danger]="globalTimeLeft <= 10">
-            <span class="points-label">Time</span>
+        <div class="timer-part" [class.danger]="globalTimeLeft <= 10" *ngIf="gameDuration !== 0">
+            <span class="points-label">{{ 'DECK.TIME' | translate }}</span>
             <span class="points-value">
                 <i class="fa-solid fa-hourglass-half"></i> {{ formattedTime }}
+            </span>
+        </div>
+
+        <div class="timer-part danger" *ngIf="gameDuration === 0">
+            <span class="points-label">{{ 'DECK.MODE' | translate }}</span>
+            <span class="points-value"
+                style="color: var(--c-dang); text-shadow: 0 0 10px rgba(var(--c-dang-rgb), 0.5);">
+                <i class="fa-solid fa-skull"></i> {{ 'DECK.DEATH' | translate }}
             </span>
         </div>
     </div>
@@ -21,27 +36,32 @@
             [question]="flashcards[currentCardIndex].question" [options]="flashcards[currentCardIndex].options"
             [correctAnswerIndex]="flashcards[currentCardIndex].correctAnswerIndex"
             [points]="flashcards[currentCardIndex].points" [hint]="flashcards[currentCardIndex].hint"
-            [newGame]="newGame" (answeredCorrect)="takeAnsweredCorrectCount($event)" (answered)="nextCard()"
-            (hintUsedCost)="applyHintPenalty($event)">
-        </app-flashcard>
+            [newGame]="newGame" (answeredCorrect)="takeAnsweredCorrectCount($event)"
+            (answeredWrong)="handleWrongAnswer()" (answered)="nextCard()" (hintUsedCost)="applyHintPenalty($event)"
+            (skipRequested)="skipCard()"> </app-flashcard>
 
         <div class="deck-actions">
             <button class="action-btn skip" (click)="skipCard()">
-                Skip ( -3 <fa-icon class="icon" [icon]="faTrophy"></fa-icon>) <fa-icon class="icon" [icon]="faArrowRight"></fa-icon>
+                {{ 'DECK.SKIP' | translate }} ( -3 <fa-icon class="icon" [icon]="faTrophy"></fa-icon>) <fa-icon
+                    class="icon" [icon]="faArrowRight"></fa-icon>
             </button>
-            <button class="action-btn end-game" (click)="endGameEarly()">
-                End Game <fa-icon class="icon" [icon]="faFlagCheckered"></fa-icon>
+            <button class="action-btn end-game" (click)="giveUp()">
+                {{ 'DECK.END_GAME' | translate }} <fa-icon class="icon" [icon]="faFlagCheckered"></fa-icon>
             </button>
         </div>
     </div>
 
     <div *ngIf="flashcards.length === 0" class="animate-drop-in" style="margin-top: 20px;">
-        <h3>No cards found for this category!</h3>
+        <h3>{{ 'DECK.NO_CARDS' | translate }}</h3>
     </div>
 
     <div class="final-score-section animate-scale-up" *ngIf="isGameOver">
-        <app-final-score [score]="answeredCorrectCount" [skippedCount]="skippedCount" [hintPenalty]="hintPenalty"
-            (playAgainSame)="handlePlayAgainSame()" (startNewGame)="handleStartNewGame()">
+        <app-final-score [totalScore]="totalScore" [correctCount]="correctCount" [correctPoints]="correctPoints"
+            [wrongCount]="wrongCount" [wrongPenalty]="wrongPenalty" [skipCount]="skipCount" [skipPenalty]="skipPenalty"
+            [hintCount]="hintCount" [hintPenalty]="hintPenalty" [isVictory]="isVictory" [playerName]="playerName"
+            [gameCategory]="gameCategory" [gameDuration]="gameDuration" (playAgainSame)="handlePlayAgainSame()"
+            (startNewGame)="handleStartNewGame()" (viewLeaderboard)="handleViewLeaderboard()">
         </app-final-score>
     </div>
+
 </div>

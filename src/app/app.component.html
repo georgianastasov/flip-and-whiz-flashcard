@@ -1,79 +1,30 @@
-<button class="theme-toggle" (click)="toggleTheme()"
-  [title]="isDarkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode'">
-  <i class="fa-solid fa-sun" *ngIf="isDarkTheme"></i>
-  <i class="fa-solid fa-moon" *ngIf="!isDarkTheme"></i>
-</button>
+<div class="top-right-controls">
+  <button class="theme-toggle" (click)="toggleTheme()"
+    [title]="isDarkTheme ? ('APP.SWITCH_LIGHT' | translate) : ('APP.SWITCH_DARK' | translate)">
+    <i class="fa-solid fa-sun" *ngIf="isDarkTheme"></i>
+    <i class="fa-solid fa-moon" *ngIf="!isDarkTheme"></i>
+  </button>
 
-<button class="back-btn animate-fade-in" *ngIf="gameState === 'duration' || gameState === 'category'"
-  (click)="goBack()">
-  <i class="fa-solid fa-arrow-left"></i> Back
-</button>
+  <button class="theme-toggle" (click)="audioService.toggleSound()">
+    <i class="fa-solid fa-volume-high" *ngIf="audioService.isSoundEnabled"></i>
+    <i class="fa-solid fa-volume-xmark" *ngIf="!audioService.isSoundEnabled" style="opacity: 0.5;"></i>
+  </button>
 
-<div class="container">
+  <div class="lang-switcher-container" #langSwitcher>
+    <button class="lang-toggle" (click)="toggleLangMenu()" [title]="'APP.CHANGE_LANG' | translate">
+      <img [src]="currentFlagUrl" alt="flag" class="flag-icon">
+      <span class="code">{{ currentLang }}</span>
+      <i class="fa-solid fa-chevron-down caret" [class.open]="isLangMenuOpen"></i>
+    </button>
 
-  <div *ngIf="gameState === 'home'" class="start-section animate-fade-in-up">
-    <h1 class="app-title">Flip & Whiz<br><span class="highlight">Flashcards</span></h1>
-    <p class="subtitle">Test your knowledge. Master the deck.</p>
-    <button class="start-btn pulse-glow" (click)="startGame()">Start Game</button>
-  </div>
-
-  <div *ngIf="gameState === 'duration'" class="duration-section animate-fade-in-up">
-    <h1 class="app-title-small">Select Game Time</h1>
-    <p class="subtitle">How long do you want to play?</p>
-
-    <div class="duration-options">
-      <button class="duration-btn" (click)="setDuration(1)">
-        <span class="time">1</span><span class="unit">Min</span>
-      </button>
-      <button class="duration-btn" (click)="setDuration(3)">
-        <span class="time">3</span><span class="unit">Min</span>
-      </button>
-      <button class="duration-btn" (click)="setDuration(5)">
-        <span class="time">5</span><span class="unit">Min</span>
-      </button>
+    <div class="lang-dropdown animate-fade-in" *ngIf="isLangMenuOpen">
+      <div class="lang-option" *ngFor="let lang of supportedLanguages" [class.active]="lang.code === currentLang"
+        (click)="setLanguage(lang)">
+        <img [src]="lang.flagUrl" alt="flag" class="flag-icon">
+        <span class="code">{{ lang.code }}</span>
+      </div>
     </div>
-  </div>
-
-  <div *ngIf="gameState === 'category'" class="category-section animate-fade-in-up">
-    <h1 class="app-title-small">Select Category</h1>
-    <p class="subtitle">What topic do you want to conquer?</p>
-
-    <div class="category-grid">
-      <button class="category-btn" (click)="setCategory('History')">
-        <i class="fa-solid fa-landmark cat-icon"></i>
-        <span class="cat-name">History</span>
-      </button>
-      <button class="category-btn" (click)="setCategory('Geography')">
-        <i class="fa-solid fa-earth-americas cat-icon"></i>
-        <span class="cat-name">Geography</span>
-      </button>
-      <button class="category-btn" (click)="setCategory('Science')">
-        <i class="fa-solid fa-flask cat-icon"></i>
-        <span class="cat-name">Science</span>
-      </button>
-      <button class="category-btn" (click)="setCategory('Literature')">
-        <i class="fa-solid fa-book cat-icon"></i>
-        <span class="cat-name">Literature</span>
-      </button>
-      <button class="category-btn" (click)="setCategory('Math')">
-        <i class="fa-solid fa-calculator cat-icon"></i>
-        <span class="cat-name">Math</span>
-      </button>
-      <button class="category-btn" (click)="setCategory('Technology')">
-        <i class="fa-solid fa-microchip cat-icon"></i>
-        <span class="cat-name">Technology</span>
-      </button>
-      <button class="category-btn highlight-cat" (click)="setCategory('All')">
-        <i class="fa-solid fa-shuffle cat-icon"></i>
-        <span class="cat-name">Mixed (All)</span>
-      </button>
-    </div>
-  </div>
-
-  <div *ngIf="gameState === 'playing'" class="game-wrapper animate-fade-in">
-    <h1 class="app-title-small">Flip & Whiz</h1>
-    <app-flashcard-deck [gameDuration]="selectedDuration" [gameCategory]="selectedCategory"
-      (returnToHome)="resetToHome()">
-    </app-flashcard-deck>
   </div>
 </div>
+
+<router-outlet></router-outlet>

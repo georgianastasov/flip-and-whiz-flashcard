@@ -1,0 +1,97 @@
+<button class="back-btn new-game-style animate-fade-in" routerLink="/">
+        <i class="fa-solid fa-home"></i> {{ 'APP.START_NEW_GAME' | translate }}
+    </button>
+
+<div class="leaderboard-container animate-fade-in-up">
+    <div class="header">
+        <h1><i class="fa-solid fa-crown gradient-crown"></i> {{ 'LEADERBOARD.TITLE' | translate }}</h1>
+        <p class="subtitle">{{ 'LEADERBOARD.SUBTITLE' | translate }}</p>
+    </div>
+
+    <div class="filters-panel">
+        <button class="global-btn" (click)="setGlobalAllTime()">
+            <fa-icon [icon]="faGlobe"></fa-icon> {{ 'LEADERBOARD.GLOBAL_ALL_TIME' | translate }}
+        </button>
+
+        <div class="dropdown-group">
+            <div class="custom-select-container">
+                <button class="filter-select" (click)="toggleCategory()">
+                    <span class="text">{{ selectedCategory === 'All' ? ('COMMON.ALL_TOPICS' | translate) :
+                        ('CATEGORIES.' + (selectedCategory | uppercase) | translate) }}</span>
+                    <i class="fa-solid fa-chevron-down caret" [class.open]="isCategoryMenuOpen"></i>
+                </button>
+                <div class="custom-dropdown animate-fade-in" *ngIf="isCategoryMenuOpen">
+                    <div class="custom-option" *ngFor="let cat of categories" [class.active]="cat === selectedCategory"
+                        (click)="selectCategory(cat)">
+                        {{ cat === 'All' ? ('COMMON.ALL_TOPICS' | translate) : ('CATEGORIES.' + (cat | uppercase) |
+                        translate) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-select-container">
+                <button class="filter-select" (click)="toggleDuration()">
+                    <span class="text">{{ selectedDuration === 'All' ? ('COMMON.ALL_TIMES' | translate) :
+                        (selectedDuration === '0' ? ('COMMON.SUDDEN_DEATH' | translate) : selectedDuration + ' ' +
+                        ('COMMON.MIN' | translate)) }}</span>
+                    <i class="fa-solid fa-chevron-down caret" [class.open]="isDurationMenuOpen"></i>
+                </button>
+                <div class="custom-dropdown animate-fade-in" *ngIf="isDurationMenuOpen">
+                    <div class="custom-option" *ngFor="let dur of durations" [class.active]="dur === selectedDuration"
+                        (click)="selectDuration(dur)">
+                        {{ dur === 'All' ? ('COMMON.ALL_TIMES' | translate) : (dur === '0' ? ('COMMON.SUDDEN_DEATH' |
+                        translate) : dur + ' ' + ('COMMON.MIN' | translate)) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-select-container">
+                <button class="filter-select" (click)="toggleLimit()">
+                    <span class="text">{{ 'LEADERBOARD.TOP' | translate }} {{ selectedLimit }}</span>
+                    <i class="fa-solid fa-chevron-down caret" [class.open]="isLimitMenuOpen"></i>
+                </button>
+                <div class="custom-dropdown animate-fade-in" *ngIf="isLimitMenuOpen">
+                    <div class="custom-option" *ngFor="let lim of limits" [class.active]="lim === selectedLimit"
+                        (click)="selectLimit(lim)">
+                        {{ 'LEADERBOARD.TOP' | translate }} {{ lim }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading-state" *ngIf="isLoading">
+        {{ 'LEADERBOARD.LOADING' | translate }}
+    </div>
+
+    <div class="empty-state" *ngIf="!isLoading && displayedScores.length === 0">
+        {{ 'LEADERBOARD.NO_SCORES' | translate }}
+    </div>
+
+    <div class="scores-list" *ngIf="!isLoading && displayedScores.length > 0">
+        <div *ngFor="let entry of displayedScores; let i = index" class="score-row"
+            [ngClass]="{'rank-1': i === 0, 'rank-2': i === 1, 'rank-3': i === 2, 'rank-other': i > 2}">
+
+            <div class="rank-badge">
+                <span *ngIf="i > 2">#{{ i + 1 }}</span>
+                <fa-icon *ngIf="i === 0" [icon]="faTrophy"></fa-icon>
+                <fa-icon *ngIf="i === 1" [icon]="faMedal"></fa-icon>
+                <fa-icon *ngIf="i === 2" [icon]="faMedal"></fa-icon>
+            </div>
+
+            <div class="player-info">
+                <span class="player-name">{{ entry.name }}</span>
+                <span class="player-context">
+                    {{ entry.duration === 0 ? ('COMMON.SUDDEN_DEATH' | translate) : entry.duration + ('COMMON.MIN' |
+                    translate) }}
+                    {{ entry.category === 'All' ? ('COMMON.ALL_TOPICS' | translate) : ('CATEGORIES.' + (entry.category |
+                    uppercase) | translate) }}
+                </span>
+            </div>
+
+            <div class="player-score">
+                {{ entry.score }} <span style="font-size: 0.6em; opacity: 0.8;">{{ 'COMMON.PTS' | translate }}</span>
+            </div>
+        </div>
+    </div>
+</div>

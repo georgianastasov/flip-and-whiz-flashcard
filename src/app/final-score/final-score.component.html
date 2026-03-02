@@ -3,43 +3,60 @@
         <div class="trophy-container">
             <fa-icon class="icon trophy" [icon]="faTrophy"></fa-icon>
         </div>
-        <h2>Mission Accomplished</h2>
+        <h2>{{ 'FINAL_SCORE.TITLE' | translate }}</h2>
     </div>
 
     <div class="score-card">
         <div class="score-row">
-            <span class="label">Points Earned:</span>
-            <span class="value success">{{ score }}</span>
+            <span class="label">{{ 'FINAL_SCORE.CORRECT_ANSWERS' | translate }} ({{ correctCount }}x)</span>
+            <span class="value success">+{{ correctPoints }}</span>
         </div>
         <div class="score-row">
-            <span class="label">Skipped Cards:</span>
-            <span class="value">{{ skippedCount }}</span>
+            <span class="label">{{ 'FINAL_SCORE.WRONG_ANSWERS' | translate }} ({{ wrongCount }}x)</span>
+            <span class="value danger">-{{ wrongPenalty }}</span>
         </div>
         <div class="score-row">
-            <span class="label">Skip Penalty:</span>
-            <span class="value danger">{{ skippedCount * 3 }}</span>
+            <span class="label">{{ 'FINAL_SCORE.SKIPPED_CARDS' | translate }} ({{ skipCount }}x)</span>
+            <span class="value danger">-{{ skipPenalty }}</span>
         </div>
         <div class="score-row">
-            <span class="label">Hints Used:</span>
-            <span class="value">{{ hintPenalty / 2 }}</span>
-        </div>
-        <div class="score-row">
-            <span class="label">Hint Penalty:</span>
-            <span class="value danger">{{ hintPenalty }}</span>
+            <span class="label">{{ 'FINAL_SCORE.HINTS_USED' | translate }} ({{ hintCount }}x)</span>
+            <span class="value danger">-{{ hintPenalty }}</span>
         </div>
     </div>
 
     <div class="total-score-box">
-        <span class="label">Final Score</span>
-        <span class="total animate-glow-text">{{ score + hintPenalty - (skippedCount * 3) }}</span>
+        <button class="score-share-icon-btn" [ngClass]="{'success': copySuccess}" (click)="copyToClipboard()"
+            [title]="'FINAL_SCORE.COPY_TITLE' | translate">
+            <i class="fa-solid" [ngClass]="copySuccess ? 'fa-check' : 'fa-share'"></i>
+        </button>
+        <span class="copied-text animate-fade-in" *ngIf="copySuccess">{{ 'FINAL_SCORE.COPIED' | translate }}</span>
+
+        <span class="label">{{ 'FINAL_SCORE.FINAL_SCORE_LABEL' | translate }}</span>
+        <span class="total animate-glow-text">{{ totalScore }}</span>
+
+        <div class="integrated-rank animate-fade-in" *ngIf="!isRankLoading && !isSavingError">
+            <span class="rank-main">{{ 'FINAL_SCORE.RANKED' | translate }}
+                <span class="rank-number">#{{ playerRank }}</span>
+                {{ 'FINAL_SCORE.OF' | translate }} {{ totalPlayersInCategory }}
+            </span>
+            <span class="rank-sub">{{ 'FINAL_SCORE.IN' | translate }} {{ displayDuration }} {{ displayCategory }}</span>
+        </div>
+        <div class="integrated-rank error animate-fade-in" *ngIf="isSavingError">
+            {{ 'ERRORS.LEADERBOARD_CONNECT' | translate }}
+        </div>
     </div>
 
     <div class="btn-group">
         <button class="primary-btn" (click)="handlePlayAgainSame()">
-            <fa-icon class="icon" [icon]="faRedo"></fa-icon> Play Same Settings
+            <fa-icon class="icon" [icon]="faRedo"></fa-icon> {{ 'FINAL_SCORE.PLAY_SAME' | translate }}
         </button>
-        <button class="secondary-btn" (click)="handleStartNewGame()">
-            <fa-icon class="icon" [icon]="faHome"></fa-icon> Start New Game
+        <button class="primary-btn" (click)="handleStartNewGame()">
+            <fa-icon class="icon" [icon]="faHome"></fa-icon> {{ 'FINAL_SCORE.START_NEW' | translate }}
         </button>
     </div>
+
+    <button class="tertiary-btn" (click)="handleViewLeaderboard()">
+        <fa-icon class="icon" [icon]="faList"></fa-icon> {{ 'FINAL_SCORE.VIEW_LEADERBOARD' | translate }}
+    </button>
 </div>

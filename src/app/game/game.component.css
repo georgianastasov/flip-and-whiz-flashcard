@@ -1,0 +1,68 @@
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 900px;
+    height: 100vh;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.game-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.4s ease forwards;
+}
+
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .container {
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 375px) {
+    .container {
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 320px) {
+    .container {
+        padding: 10px;
+    }
+}

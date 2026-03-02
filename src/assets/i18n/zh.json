@@ -1,0 +1,118 @@
+{
+  "COMMON": {
+    "MIN": "分钟",
+    "ALL": "全部",
+    "ALL_TOPICS": "所有主题",
+    "ALL_TIMES": "所有时间",
+    "SUDDEN_DEATH": "突然死亡",
+    "PTS": "分",
+    "BACK": "返回"
+  },
+  "CATEGORIES": {
+    "HISTORY": "历史",
+    "GEOGRAPHY": "地理",
+    "SCIENCE": "科学",
+    "LITERATURE": "文学",
+    "MATHEMATICS": "数学",
+    "TECHNOLOGY": "技术",
+    "ALL": "混合（全部）"
+  },
+  "LANGUAGES": {
+    "ENGLISH": "英语",
+    "CHINESE": "中文",
+    "SPANISH": "西班牙语",
+    "GERMAN": "德语",
+    "FRENCH": "法语",
+    "BULGARIAN": "保加利亚语"
+  },
+  "ERRORS": {
+    "NAME_TOO_SHORT": "名称至少需要3个字符。",
+    "NAME_TOO_LONG": "名称不能超过10个字符。",
+    "NAME_INVALID_CHARS": "仅允许使用拉丁字母和数字（不允许空格或符号）。",
+    "NAME_INAPPROPRIATE": "检测到不适当的词语。请选择其他名称。",
+    "LEADERBOARD_CONNECT": "无法连接到排行榜。"
+  },
+  "APP": {
+    "SWITCH_LIGHT": "切换到浅色模式",
+    "SWITCH_DARK": "切换到深色模式",
+    "CHANGE_LANG": "更改语言",
+    "START_NEW_GAME": "开始新游戏",
+    "TITLE_1": "Flip & Whiz",
+    "TITLE_2": "Flashcards",
+    "SUBTITLE": "测试你的知识。掌握整副卡牌。",
+    "START_BTN": "开始游戏",
+    "VIEW_LEADERBOARD": "查看排行榜",
+    "SELECT_TIME": "选择游戏时间",
+    "TIME_SUBTITLE": "你想玩多久？",
+    "SELECT_CATEGORY": "选择类别",
+    "CATEGORY_SUBTITLE": "你想征服哪个主题？",
+    "ENTER_ALIAS": "输入你的昵称",
+    "ALIAS_SUBTITLE": "在排行榜上占据一席之地。",
+    "PLAYER_NAME_PLACEHOLDER": "玩家名称",
+    "READY_TO_PLAY": "准备开始"
+  },
+  "DECK": {
+    "SCORE": "得分",
+    "TIME": "时间",
+    "MODE": "模式",
+    "DEATH": "死亡",
+    "SKIP": "跳过",
+    "END_GAME": "结束游戏",
+    "NO_CARDS": "该类别未找到卡牌！"
+  },
+  "FLASHCARD": {
+    "GET_HINT": "获取提示",
+    "HYPES": {
+      "WRONG_1": "哎呀！",
+      "WRONG_2": "差一点！",
+      "WRONG_3": "再试一次！",
+      "WRONG_4": "还不完全正确！",
+      "CORRECT_1": "闪电般！",
+      "CORRECT_2": "势不可挡！",
+      "CORRECT_3": "答对了！",
+      "CORRECT_4": "完美！"
+    }
+  },
+  "FINAL_SCORE": {
+    "TITLE": "任务完成",
+    "CORRECT_ANSWERS": "正确答案",
+    "WRONG_ANSWERS": "错误答案",
+    "SKIPPED_CARDS": "跳过的卡片",
+    "HINTS_USED": "使用的提示",
+    "FINAL_SCORE_LABEL": "最终得分",
+    "COPY_TITLE": "复制成绩卡",
+    "COPIED": "已复制！",
+    "RANKED": "排名",
+    "OF": "共",
+    "IN": "在",
+    "PLAY_SAME": "使用相同设置再玩一次",
+    "START_NEW": "开始新游戏",
+    "VIEW_LEADERBOARD": "查看完整排行榜",
+    "CLIPBOARD_TEXT": "🃏 *Flip & Whiz*\n\n🏆 得分: {{score}} 分\n🌍 {{duration}} {{category}}\n👑 排名: 全球排行榜第 #{{rank}} 名！\n\n你能打败我吗？点击这里开始游戏: https://github.com/georgianastasov/flip-and-whiz-flashcard"
+  },
+  "LEADERBOARD": {
+    "TITLE": "名人堂",
+    "SUBTITLE": "Flip & Whiz 中最强大脑",
+    "GLOBAL_ALL_TIME": "全球总榜",
+    "TOP": "前",
+    "LOADING": "正在加载排行榜...",
+    "NO_SCORES": "当前设置下暂无成绩。成为第一个吧！"
+  },
+  "HOW_TO_PLAY": {
+    "BUTTON": "游戏玩法",
+    "TITLE": "📖 Flip & Whiz 游戏指南",
+    "STEP_1_TITLE": "🎮 1. 开始你的旅程",
+    "STEP_1_DESC": "点击“开始游戏”按钮开始。",
+    "STEP_2_TITLE": "⏱️ 2. 选择时间",
+    "STEP_2_DESC": "选择 1、3 或 5 分钟。够勇敢吗？试试“猝死模式”，答错一次游戏立即结束！",
+    "STEP_3_TITLE": "🧠 3. 选择类别",
+    "STEP_3_DESC": "掌握历史或科学等特定主题，或选择“混合（全部）”挑战所有类别的问题。",
+    "STEP_4_TITLE": "✍️ 4. 选择昵称",
+    "STEP_4_DESC": "输入玩家名称（3 到 10 个字符，仅限拉丁字母/数字）以记录你的成绩。",
+    "STEP_5_TITLE": "⚡ 5. 游戏与得分",
+    "STEP_5_DESC": "回答正确即可得分！注意：答错将扣除 5 分。需要帮助？使用提示（-2 分）或跳过卡片（-3 分）。",
+    "STEP_6_TITLE": "🏆 6. 荣誉榜",
+    "STEP_6_DESC": "游戏结束后，查看你的总分，并了解你在所选模式和类别中的全球排名！",
+    "CLOSE": "明白了！开始游戏"
+  }
+}

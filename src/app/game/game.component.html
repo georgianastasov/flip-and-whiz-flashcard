@@ -1,0 +1,9 @@
+<div class="container game-wrapper animate-fade-in">
+    <app-flashcard-deck 
+        [gameDuration]="gameDuration" 
+        [gameCategory]="gameCategory" 
+        [playerName]="playerName"
+        (returnToHome)="goToHome()" 
+        (viewLeaderboard)="goToLeaderboard()"> 
+    </app-flashcard-deck>
+</div>

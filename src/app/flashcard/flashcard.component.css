@@ -13,6 +13,36 @@
     flex-direction: column;
     position: relative;
     transition: all 0.4s ease;
+    z-index: 1;
+}
+
+.background-aura {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    filter: blur(90px);
+    z-index: -1;
+    transition: background-color 0.6s ease, opacity 0.6s ease;
+    pointer-events: none;
+}
+
+.background-aura.idle {
+    background-color: rgba(var(--c-sec-rgb), 0.15);
+    opacity: 0.4;
+}
+
+.background-aura.blue {
+    background-color: rgba(var(--c-tert-rgb), 0.4);
+    opacity: 0.7;
+}
+
+.background-aura.red {
+    background-color: rgba(var(--c-dang-rgb), 0.35);
+    opacity: 0.7;
 }
 
 .card-header {
@@ -23,24 +53,24 @@
 }
 
 .category-badge {
-    color: #8b5cf6;
+    color: var(--c-sec);
     font-weight: 700;
     font-size: 1rem;
-    background: rgba(139, 92, 246, 0.15);
+    background: rgba(var(--c-sec-rgb), 0.15);
     padding: 4px 14px;
     border-radius: 20px;
-    border: 1px solid rgba(139, 92, 246, 0.3);
+    border: 1px solid rgba(var(--c-sec-rgb), 0.3);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .point-value {
-    background: linear-gradient(90deg, #ec4899 0%, #8b5cf6 100%);
+    background: linear-gradient(90deg, var(--c-prim) 0%, var(--c-sec) 100%);
     padding: 4px 14px;
     border-radius: 20px;
     font-size: 1rem;
     font-weight: 700;
-    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+    box-shadow: 0 4px 15px rgba(var(--c-prim-rgb), 0.3);
     color: white;
 }
 
@@ -91,15 +121,12 @@
 }
 
 .option-item .hype.blue {
-    color: #38bdf8;
+    color: var(--accent-blue);
 }
 
-/* existing blue */
 .option-item .hype.red {
-    color: #f43f5e;
+    color: var(--c-dang);
 }
-
-/* existing red */
 
 @keyframes floatUpFade {
     0% {
@@ -140,44 +167,44 @@
     border-radius: 6px;
     margin-right: 12px;
     font-weight: 700;
-    color: #8b5cf6;
+    color: var(--c-sec);
 }
 
 .option-btn:hover:not([disabled]) {
-    background: rgba(139, 92, 246, 0.1);
-    border-color: #8b5cf6;
+    background: rgba(var(--c-sec-rgb), 0.1);
+    border-color: var(--c-sec);
     transform: translateX(5px);
 }
 
 .option-btn.selected {
-    background: rgba(6, 182, 212, 0.2);
-    border-color: #06b6d4;
-    box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+    background: rgba(var(--c-tert-rgb), 0.2);
+    border-color: var(--c-tert);
+    box-shadow: 0 0 15px rgba(var(--c-tert-rgb), 0.4);
 }
 
 .option-btn.correct {
-    background: rgba(16, 185, 129, 0.2);
-    border-color: #10b981;
+    background: rgba(var(--c-succ-rgb), 0.2);
+    border-color: var(--c-succ);
     color: #fff;
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 0 20px rgba(var(--c-succ-rgb), 0.4);
     animation: correctPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .option-btn.correct .option-letter {
-    background: #10b981;
+    background: var(--c-succ);
     color: #fff;
 }
 
 .option-btn.wrong {
-    background: rgba(244, 63, 94, 0.2);
-    border-color: #f43f5e;
+    background: rgba(var(--c-dang-rgb), 0.2);
+    border-color: var(--c-dang);
     color: #fff;
-    box-shadow: 0 0 20px rgba(244, 63, 94, 0.4);
+    box-shadow: 0 0 20px rgba(var(--c-dang-rgb), 0.4);
     animation: wrongShake 0.5s ease-in-out;
 }
 
 .option-btn.wrong .option-letter {
-    background: #f43f5e;
+    background: var(--c-dang);
     color: #fff;
 }
 
@@ -204,8 +231,8 @@
 
 .hint-btn:hover:not([disabled]) {
     background: rgba(56, 189, 248, 0.15);
-    border-color: #38bdf8;
-    color: #38bdf8;
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
 }
 
 .hint-btn[disabled] {
@@ -215,11 +242,11 @@
 
 .hint-box {
     background: var(--hint-box-bg);
-    border: 1px solid #38bdf8;
-    border-left: 4px solid #38bdf8;
+    border: 1px solid var(--accent-blue);
+    border-left: 4px solid var(--accent-blue);
     padding: 12px 16px;
     border-radius: 12px;
-    color: #38bdf8;
+    color: var(--accent-blue);
     font-weight: 500;
     box-shadow: 0 10px 25px var(--shadow-color);
     margin-top: 15px;
@@ -315,23 +342,9 @@
 }
 
 .hype.blue {
-    color: #38bdf8;
+    color: var(--accent-blue);
 }
 
 .hype.red {
-    color: #f43f5e;
-}
-
-@keyframes floatUpFade {
-    0% {
-        transform: translate(-50%, 0);
-        opacity: 1;
-        filter: blur(0);
-    }
-
-    100% {
-        transform: translate(-50%, -40px);
-        opacity: 0;
-        filter: blur(.5px);
-    }
+    color: var(--c-dang);
 }

@@ -1,7 +1,11 @@
 <div class="flashcard animate-card-flip">
-    <div class="card-header">
-        <div class="category-badge"><i class="fa-solid fa-tag"></i> {{ category }}</div>
+    <div class="background-aura" [ngClass]="auraClass"></div>
 
+    <div class="card-header">
+        <div class="category-badge"><i class="fa-solid fa-tag"></i>
+            {{ category === 'All' ? ('COMMON.ALL_TOPICS' | translate) : ('CATEGORIES.' + (category | uppercase) |
+            translate) }}
+        </div>
         <div class="point-value">+{{ points }} <fa-icon class="icon" [icon]="faTrophy"></fa-icon></div>
     </div>
 
@@ -9,8 +13,9 @@
 
     <ul class="options-list">
         <li *ngFor="let option of options; let i = index" class="option-item" [style.animation-delay]="i * 0.1 + 's'">
-            <div class="hype" *ngIf="hypeText && clickedOptionIndex === i" [class.blue]="hypeClass === 'blue'" [class.red]="hypeClass === 'red'">
-                {{ hypeText }}
+            <div class="hype" *ngIf="hypeText && clickedOptionIndex === i" [class.blue]="hypeClass === 'blue'"
+                [class.red]="hypeClass === 'red'">
+                {{ hypeText | translate }}
             </div>
             <button class="option-btn" (click)="selectOption(i)" [class.selected]="selectedAnswerIndex === i"
                 [class.correct]="optionSelected && i === correctAnswerIndex"
@@ -24,7 +29,8 @@
 
     <div class="flashcard-actions">
         <button class="hint-btn" (click)="showHint()" [disabled]="hintUsed || optionSelected">
-            <i class="fa-solid fa-wand-magic-sparkles"></i> Get Hint ( -2<fa-icon class="icon" [icon]="faTrophy"></fa-icon>) 
+            <i class="fa-solid fa-wand-magic-sparkles"></i> {{ 'FLASHCARD.GET_HINT' | translate }} ( -2<fa-icon
+                class="icon" [icon]="faTrophy"></fa-icon>)
         </button>
     </div>
 
