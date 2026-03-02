@@ -1,10 +1,45 @@
 <div class="final-score">
-    <h2>Game Over</h2>
-    <p>Points from answared questions: {{ score }}</p>
-    <p>Skipped questions: {{ skippedCount }}</p>
-    <p>Points deducted for skipped questions: -{{ skippedCount * 5 }}</p>
-    <p>Hints used: {{ hintPenalty / 2 }}</p>
-    <p>Points deducted for using hints: {{ hintPenalty }}</p>
-    <p>Total score (with penalties): {{ score + hintPenalty - (skippedCount * 5) }}</p>
-    <button (click)="handlePlayAgain()">Play Again</button>
+    <div class="score-header">
+        <div class="trophy-container">
+            <fa-icon class="icon trophy" [icon]="faTrophy"></fa-icon>
+        </div>
+        <h2>Mission Accomplished</h2>
+    </div>
+
+    <div class="score-card">
+        <div class="score-row">
+            <span class="label">Points Earned:</span>
+            <span class="value success">{{ score }}</span>
+        </div>
+        <div class="score-row">
+            <span class="label">Skipped Cards:</span>
+            <span class="value">{{ skippedCount }}</span>
+        </div>
+        <div class="score-row">
+            <span class="label">Skip Penalty:</span>
+            <span class="value danger">{{ skippedCount * 3 }}</span>
+        </div>
+        <div class="score-row">
+            <span class="label">Hints Used:</span>
+            <span class="value">{{ hintPenalty / 2 }}</span>
+        </div>
+        <div class="score-row">
+            <span class="label">Hint Penalty:</span>
+            <span class="value danger">{{ hintPenalty }}</span>
+        </div>
+    </div>
+
+    <div class="total-score-box">
+        <span class="label">Final Score</span>
+        <span class="total animate-glow-text">{{ score + hintPenalty - (skippedCount * 3) }}</span>
+    </div>
+
+    <div class="btn-group">
+        <button class="primary-btn" (click)="handlePlayAgainSame()">
+            <fa-icon class="icon" [icon]="faRedo"></fa-icon> Play Same Settings
+        </button>
+        <button class="secondary-btn" (click)="handleStartNewGame()">
+            <fa-icon class="icon" [icon]="faHome"></fa-icon> Start New Game
+        </button>
+    </div>
 </div>
