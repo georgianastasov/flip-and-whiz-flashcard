@@ -19,7 +19,7 @@ Answer fast, build your score, and fight for the top rank on the global leaderbo
   - "Hype" text that floats over your cards ("Lightning!", "Nailed it!", "Ouch!").
   - A neon confetti burst when you successfully conquer a deck!
 - 🏆 **Hall of Fame Leaderboard**: Enter your custom alias and compete! Our fully functional local database tracks your scores. Filter the global leaderboard by Category and Time to see who holds the Gold, Silver, and Bronze ranks.
-- 🎯 **Strategic Scoring**: Earn points for correct answers, but tread carefully using a Hint costs `-2 points`, and Skipping a question costs `-3 points`!
+- 🎯 **Strategic Scoring**: Earn points for correct answers, but tread carefully wrong answers costs `-5 points`, using a Hint costs `-2 points`, and Skipping a question costs `-3 points`!
 
 ## 🚀 Quick Start Guide
 
